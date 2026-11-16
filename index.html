@@ -1243,6 +1243,59 @@
               </div>
 
             </div>
+            <nav
+              aria-label="التنقل الرئيسي"
+              className="md:hidden max-w-7xl mx-auto mt-3 grid grid-cols-4 gap-1 rounded-2xl bg-black/[0.04] dark:bg-white/[0.06] p-1 border border-black/[0.04] dark:border-white/[0.05]"
+            >
+              <button
+                aria-label="المراقبة اللحظية والمحاكي"
+                onClick={() => { setActiveView('telemetry'); if(soundEnabled) playHapticSound('click'); }}
+                className={`min-w-0 flex flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-[10px] leading-tight font-bold transition-all ${
+                  activeView === 'telemetry'
+                    ? 'bg-white dark:bg-zinc-800 text-apple-blue dark:text-white shadow-sm'
+                    : 'text-gray-600 dark:text-gray-400'
+                }`}
+              >
+                <span className="text-sm">⚡</span>
+                <span>المراقبة</span>
+              </button>
+              <button
+                aria-label="الأجهزة وساعات التشغيل"
+                onClick={() => { setActiveView('devices'); if(soundEnabled) playHapticSound('click'); }}
+                className={`min-w-0 flex flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-[10px] leading-tight font-bold transition-all ${
+                  activeView === 'devices'
+                    ? 'bg-white dark:bg-zinc-800 text-apple-blue dark:text-white shadow-sm'
+                    : 'text-gray-600 dark:text-gray-400'
+                }`}
+              >
+                <span className="text-sm">🔌</span>
+                <span>الأجهزة</span>
+              </button>
+              <button
+                aria-label="الاستدامة البيئية"
+                onClick={() => { setActiveView('analytics'); if(soundEnabled) playHapticSound('click'); }}
+                className={`min-w-0 flex flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-[10px] leading-tight font-bold transition-all ${
+                  activeView === 'analytics'
+                    ? 'bg-white dark:bg-zinc-800 text-apple-green dark:text-white shadow-sm'
+                    : 'text-gray-600 dark:text-gray-400'
+                }`}
+              >
+                <span className="text-sm">🌿</span>
+                <span>الاستدامة</span>
+              </button>
+              <button
+                aria-label="نموذج التقرير"
+                onClick={() => { setActiveView('audit'); if(soundEnabled) playHapticSound('click'); }}
+                className={`min-w-0 flex flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-[10px] leading-tight font-bold transition-all ${
+                  activeView === 'audit'
+                    ? 'bg-white dark:bg-zinc-800 text-apple-purple dark:text-white shadow-sm'
+                    : 'text-gray-600 dark:text-gray-400'
+                }`}
+              >
+                <span className="text-sm">📑</span>
+                <span>التقرير</span>
+              </button>
+            </nav>
           </header>
 
           {/* ===================== SCREEN DASHBOARD CONTENT (NO-PRINT) ===================== */}
