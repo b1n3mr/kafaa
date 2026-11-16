@@ -1,0 +1,52 @@
+{
+  "name": "kafaa-desktop",
+  "version": "2.5.0",
+  "description": "تطبيق سطح المكتب كِفَاءَة — المنظومة الوطنية لإدارة ومراقبة استهلاك الطاقة والاستدامة البيئية",
+  "main": "main.js",
+  "author": "Kafaa Technologies",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "serve": "node server.js",
+    "build": "electron-builder --win nsis",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "sa.kafaa.desktop",
+    "productName": "Kafaa Desktop (كِفَاءَة)",
+    "copyright": "Copyright © 2026 Kafaa. All rights reserved.",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "icon.ico",
+      "artifactName": "Kafaa-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Kafaa Desktop (كِفَاءَة)",
+      "language": "1025"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "server.js",
+      "index.html",
+      "icon.ico",
+      "package.json"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  }
+}

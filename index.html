@@ -1,0 +1,3014 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <meta name="description" content="كفاءة - منصة تقديرية لمتابعة استهلاك الطاقة والاستدامة." />
+  <title>مَنَصَّةُ كَفَاءةِ | الهيئة الوطنية لإدارة الطاقة</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230071E3'><path d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/></svg>" />
+
+  <!-- Google Fonts: Alyamama (خط اليمامة للنصوص العربية) + IBM Plex Sans (للأرقام والحروف الإنجليزية الرسمية) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alyamama:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            apple: {
+              blue: '#0071E3',
+              'blue-hover': '#0077ED',
+              green: '#34C759',
+              orange: '#FF9500',
+              red: '#FF3B30',
+              purple: '#AF52DE',
+              cyan: '#30B0C7',
+              gray: '#86868B',
+              bgLight: '#F5F5F7',
+              cardLight: '#FFFFFF',
+              bgDark: '#0A0A0C',
+              cardDark: '#16161A',
+              borderDark: 'rgba(255, 255, 255, 0.08)',
+              borderLight: 'rgba(0, 0, 0, 0.07)',
+            }
+          },
+          fontFamily: {
+            sans: ['"IBM Plex Sans"', '"Alyamama"', 'sans-serif'],
+            heading: ['"IBM Plex Sans"', '"Alyamama"', 'sans-serif'],
+            number: ['"IBM Plex Sans"', 'sans-serif'],
+          },
+          boxShadow: {
+            'apple': '0 2px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)',
+            'apple-hover': '0 14px 34px rgba(0, 0, 0, 0.09), 0 4px 12px rgba(0, 0, 0, 0.04)',
+            'apple-dark': '0 8px 32px rgba(0, 0, 0, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- React 18 & Babel Standalone -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    /* =========================================================================
+       UNIFIED TYPOGRAPHY SYSTEM:
+       - Arabic Text: Alyamama (اليمامة) across the entire application & print
+       - English Letters & Numbers: IBM Plex Sans (official tabular figures)
+       ========================================================================= */
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      unicode-range: U+0000-00FF, U+0100-024F;
+    }
+
+    * {
+      font-family: 'IBM Plex Sans', 'Alyamama', sans-serif;
+    }
+
+    body, p, span, div, h1, h2, h3, h4, h5, h6, button, input, select, textarea, th, td, text, tspan, textPath {
+      font-family: 'IBM Plex Sans', 'Alyamama', sans-serif !important;
+    }
+
+    body {
+      direction: rtl;
+      text-align: right;
+    }
+
+    .tabular-nums, .num-font, .num-only, [data-num] {
+      font-family: 'IBM Plex Sans', 'Alyamama', sans-serif !important;
+      font-variant-numeric: tabular-nums lining-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+      letter-spacing: -0.01em;
+    }
+
+    /* Custom Apple Range Slider */
+    input[type=range] {
+      -webkit-appearance: none;
+      height: 6px;
+      border-radius: 9999px;
+      background: #E5E5EA;
+      outline: none;
+      transition: background 0.2s;
+    }
+    .dark input[type=range] {
+      background: #2C2C2E;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #0071E3;
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      border: 2px solid #FFFFFF;
+      transition: transform 0.15s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    /* Subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(134, 134, 139, 0.25);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(134, 134, 139, 0.45);
+    }
+
+    /* =========================================================================
+       OFFICIAL COLORFUL PRINT STYLES — SAUDI GOVERNMENT & EXECUTIVE STANDARD
+       ========================================================================= */
+    @media print {
+      @page {
+        size: portrait;
+        margin: 8mm 10mm 8mm 10mm;
+      }
+      
+      html, body {
+        background: #FFFFFF !important;
+        color: #111827 !important;
+        font-family: 'IBM Plex Sans', 'Alyamama', sans-serif !important;
+        font-size: 9pt !important;
+        line-height: 1.38 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        direction: rtl !important;
+        text-align: right !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      /* Hide all screen chrome */
+      .no-print,
+      header,
+      aside,
+      nav,
+      .screen-dashboard-container,
+      button,
+      .action-pill {
+        display: none !important;
+      }
+
+      /* Colorful official document container */
+      .print-document-wrapper {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: #FFFFFF !important;
+      }
+
+      .avoid-break {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+
+    @media screen {
+      .print-document-screen {
+        max-width: 850px;
+        margin: 0 auto;
+        background: #FFFFFF;
+        box-shadow: 0 12px 45px rgba(0,0,0,0.1);
+        border: 1px solid rgba(0,0,0,0.12);
+        border-radius: 1.25rem;
+        overflow: hidden;
+      }
+      .dark .print-document-screen {
+        background: #FFFFFF;
+        border-color: rgba(255,255,255,0.15);
+        box-shadow: 0 12px 45px rgba(0,0,0,0.6);
+      }
+      .print-only-hidden {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-apple-bgLight dark:bg-apple-bgDark text-[#1D1D1F] dark:text-[#F5F5F7] transition-colors duration-300 min-h-screen flex flex-col overflow-x-hidden" dir="rtl">
+  <div id="root" class="flex-1 flex flex-col"></div>
+
+  <!-- Main React Application -->
+  <script type="text/babel">
+    const { useState, useEffect, useMemo } = React;
+
+    // --- Strict Official Western Arabic Numerals Formatter (1, 2, 3...) ---
+    const formatNumber = (num, decimals = 0) => {
+      if (num === null || num === undefined || isNaN(num)) return '0';
+      const n = Number(num);
+      return decimals > 0
+        ? n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
+        : n.toLocaleString('en-US');
+    };
+
+    const formatSimulationCost = (amount) => {
+      return formatNumber(amount, 2);
+    };
+
+    const PRICE_ADJUSTMENT_RATE = 0.30;
+    const DEFAULT_CUSTOMER_NAME = 'سعود بن عادل الرميان';
+    // Replace this with the published verification form URL before deployment.
+    const REPORT_VERIFICATION_URL = 'https://forms.google.com/';
+    const PROJECT_STUDENTS = 'إبراهيم بن عمر باوزير، مازن بن خالد الضفيان، مشعل بن لقمان الجمعة';
+    const PROJECT_SECTION = '304';
+
+    const normalizeDeviceName = (name) => String(name || '')
+      .replace(/\s*\(\s*\d+\s*(?:مكاتب?|جهاز|أجهزة|وحدة|وحدات|شاشة|شاشات|لمبة|لمبات|مكيف|مكيفات|مصعد|مصاعد|devices?|units?|desks?|screens?|lamps?|lifts?)[^)]*\)/gi, '')
+      .replace(/\bPackage\/Chiller\b/gi, 'تكييف مركزي')
+      .replace(/\bPrecision AC\b/gi, 'تكييف دقيق')
+      .replace(/مبردات\s+Chillers/gi, 'مبردات مركزية')
+      .replace(/\bChillers\b/gi, 'مبردات مركزية')
+      .replace(/\bPackage\b/gi, 'تكييف باكيج')
+      .replace(/\bLED\b/gi, 'ليد')
+      .replace(/\bLevel 2\b/gi, 'المستوى الثاني')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    const formatSaudiDate = (date = new Date()) => {
+      const months = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+      const day = date.getDate();
+      const month = months[date.getMonth()];
+      const year = date.getFullYear();
+      return `${day} ${month} ${year}م`;
+    };
+
+    const formatTimeEn = (date = new Date()) => {
+      return date.toLocaleTimeString('en-GB', { hour12: false });
+    };
+
+    // =========================================================================
+    // 🇸🇦 OFFICIAL SAUDI RIYAL SYMBOL (SAMA APPROVED STANDARD - U+20C1)
+    // =========================================================================
+    const SAMA_RIYAL_PATH_1 = "M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z";
+    const SAMA_RIYAL_PATH_2 = "M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z";
+
+    const SaudiRiyalSymbol = ({ className = "w-4 h-4", color = "currentColor" }) => (
+      <svg
+        viewBox="0 0 1124.14 1256.39"
+        xmlns="http://www.w3.org/2000/svg"
+        className={`inline-block flex-shrink-0 ${className}`}
+        style={{ display: 'inline-block', verticalAlign: '-0.15em', fill: color }}
+        aria-label="رمز الريال السعودي الرسمي"
+      >
+        <path d={SAMA_RIYAL_PATH_1} />
+        <path d={SAMA_RIYAL_PATH_2} />
+      </svg>
+    );
+
+    const SaudiCurrencyDisplay = ({ amount, decimals = 2, size = "text-base", color = "text-apple-blue dark:text-[#2997FF]" }) => {
+      return (
+        <span className={`inline-flex items-center gap-1 tabular-nums ${size}`} dir="ltr">
+          <SaudiRiyalSymbol className={`w-[0.9em] h-[0.9em] ${color}`} />
+          <span className="font-bold tracking-tight num-font">{formatNumber(amount, decimals)}</span>
+        </span>
+      );
+    };
+
+    // =========================================================================
+    // Blue project stamp, clearly marked as non-governmental
+    // =========================================================================
+    const OfficialAuditStamp = () => {
+      return (
+        <div
+          className="relative w-32 h-32 flex items-center justify-center flex-shrink-0 select-none transform -rotate-6 transition-transform hover:rotate-0"
+          title="ختم توضيحي لمنصة كفاءة، لا يمثل اعتماداً حكومياً"
+          style={{ mixBlendMode: 'multiply' }}
+        >
+          <svg className="w-full h-full" viewBox="0 0 220 220" fill="none">
+            <defs>
+              <filter id="blue-ink-texture" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+                <feComponentTransfer in="displaced">
+                  <feFuncA type="linear" slope="0.92" />
+                </feComponentTransfer>
+              </filter>
+            </defs>
+
+            <g filter="url(#blue-ink-texture)">
+              <circle cx="110" cy="110" r="103" stroke="#1E3A8A" strokeWidth="3.5" opacity="0.92" />
+              <circle cx="110" cy="110" r="97" stroke="#1E3A8A" strokeWidth="1.2" opacity="0.85" />
+              <circle cx="110" cy="110" r="93" stroke="#1E3A8A" strokeWidth="0.8" strokeDasharray="3 2" opacity="0.75" />
+
+              <text x="20" y="114" fill="#1E3A8A" fontSize="11" fontWeight="900">✦</text>
+              <text x="191" y="114" fill="#1E3A8A" fontSize="11" fontWeight="900">✦</text>
+
+              <path id="stampTopArc" d="M 26,110 A 84,84 0 1,1 194,110" fill="none" />
+              <text fill="#1E3A8A" fontSize="11.5" fontWeight="900" letterSpacing="0.5">
+                <textPath href="#stampTopArc" startOffset="50%" textAnchor="middle">
+                  منصة كفاءة • متابعة استهلاك الطاقة
+                </textPath>
+              </text>
+
+              <path id="stampBottomArc" d="M 194,110 A 84,84 0 0,1 26,110" fill="none" />
+              <text fill="#1E3A8A" fontSize="10" fontWeight="800" letterSpacing="0.4">
+                <textPath href="#stampBottomArc" startOffset="50%" textAnchor="middle">
+                  تقرير تقديري • غير معتمد رسمياً
+                </textPath>
+              </text>
+
+              <circle cx="110" cy="110" r="68" stroke="#1E3A8A" strokeWidth="1.6" opacity="0.88" />
+
+              <rect x="35" y="102" width="150" height="26" rx="3" fill="#1E3A8A" opacity="0.93" />
+              <text x="110" y="116" fill="#FFFFFF" fontSize="12.5" fontWeight="900" textAnchor="middle" dominantBaseline="middle">
+                نسخة توضيحية
+              </text>
+
+              <text x="110" y="143" fill="#1E3A8A" fontSize="8.5" fontWeight="900" textAnchor="middle">
+                غير صادر عن جهة حكومية
+              </text>
+              <text x="110" y="156" fill="#1E3A8A" fontSize="8" fontWeight="800" textAnchor="middle">
+                منصة كفاءة
+              </text>
+            </g>
+          </svg>
+        </div>
+      );
+    };
+
+    const ReportQRCode = ({ value }) => {
+      const containerRef = React.useRef(null);
+      const [error, setError] = useState('');
+
+      useEffect(() => {
+        if (!containerRef.current) return;
+        containerRef.current.replaceChildren();
+        if (!window.QRCode) {
+          setError('تعذر تحميل منشئ رمز QR');
+          return;
+        }
+
+        setError('');
+        new window.QRCode(containerRef.current, {
+          text: value,
+          width: 100,
+          height: 100,
+          colorDark: '#111827',
+          colorLight: '#ffffff',
+          correctLevel: window.QRCode.CorrectLevel.M
+        });
+
+        return () => {
+          if (containerRef.current) containerRef.current.replaceChildren();
+        };
+      }, [value]);
+
+      return (
+        <div className="flex flex-col items-center justify-center gap-1">
+          <div ref={containerRef} aria-label="رمز QR لرابط Google Forms" />
+          {error && <span style={{ fontSize: '6pt', color: '#b91c1c' }}>{error}</span>}
+        </div>
+      );
+    };
+
+    // --- Sound Synthesis ---
+    const playHapticSound = (type = 'click') => {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        if (type === 'click') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(650, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(180, audioCtx.currentTime + 0.04);
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.04);
+        } else if (type === 'surge') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.15);
+          gain.gain.setValueAtTime(0.07, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.15);
+        } else if (type === 'toggle') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(550, audioCtx.currentTime + 0.05);
+          gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.05);
+        }
+      } catch (e) {}
+    };
+
+    // --- 4 Real-World Facility Profiles (Each updated with +3 devices including 2 low-frequency weekly devices) ---
+    const DEFAULT_FACILITIES = [
+      {
+        id: 'apartment',
+        name: 'شقة سكنية (Apartment)',
+        category: 'residential',
+        icon: 'home',
+        desc: 'استهلاك سكني اقتصادي ضمن الشريحة الأولى',
+        schedule: 'على مدار الساعة — نمط سكني عائلي',
+        tariffMode: 'residential',
+        tariffTier1Rate: 0.18,
+        tariffTier2Rate: 0.30,
+        meterFee: 10.00,
+        devices: [
+          { id: 'apt-1', name: 'مكيف سبليت الصالة (2 طن)', room: 'الصالة', wattage: 2200, quantity: 1, hoursPerDay: 12, daysPerMonth: 30, isActive: true, icon: 'wind' },
+          { id: 'apt-2', name: 'مكيف سبليت غرفة النوم (1.5 طن)', room: 'غرفة النوم', wattage: 1500, quantity: 1, hoursPerDay: 9, daysPerMonth: 30, isActive: true, icon: 'wind' },
+          { id: 'apt-3', name: 'ثلاجة مطبخ إنفرتر', room: 'المطبخ', wattage: 180, quantity: 1, hoursPerDay: 24, daysPerMonth: 30, isActive: true, icon: 'refrigerator' },
+          { id: 'apt-4', name: 'سخان مياه كهربائي', room: 'دورة المياه', wattage: 1500, quantity: 1, hoursPerDay: 4, daysPerMonth: 30, isActive: true, icon: 'flame' },
+          { id: 'apt-5', name: 'غسالة ملابس أوتوماتيك', room: 'المطبخ', wattage: 500, quantity: 1, hoursPerDay: 1.5, daysPerMonth: 20, isActive: true, icon: 'washing-machine' },
+          { id: 'apt-6', name: 'تلفزيون ذكي 55 بوصة ورسيفر', room: 'الصالة', wattage: 110, quantity: 1, hoursPerDay: 7, daysPerMonth: 30, isActive: true, icon: 'tv' },
+          { id: 'apt-7', name: 'ميكروويف تسخين سريع', room: 'المطبخ', wattage: 1100, quantity: 1, hoursPerDay: 0.5, daysPerMonth: 30, isActive: true, icon: 'zap' },
+          { id: 'apt-8', name: 'إضاءة الشقة كاملة (LED موفرة)', room: 'عام', wattage: 10, quantity: 12, hoursPerDay: 7, daysPerMonth: 30, isActive: true, icon: 'lightbulb' },
+          { id: 'apt-9', name: 'غلاية مياه وصانعة قهوة', room: 'المطبخ', wattage: 1800, quantity: 1, hoursPerDay: 0.5, daysPerMonth: 30, isActive: true, icon: 'flame' },
+          { id: 'apt-10', name: 'مكنسة كهربائية (تعمل مرتين أسبوعياً)', room: 'عام', wattage: 1600, quantity: 1, hoursPerDay: 1, daysPerMonth: 8, isActive: true, icon: 'zap' },
+          { id: 'apt-11', name: 'مكواة ملابس بخار (تعمل مرة أسبوعياً)', room: 'غرفة الغسيل', wattage: 2000, quantity: 1, hoursPerDay: 1.5, daysPerMonth: 4, isActive: true, icon: 'flame' }
+        ]
+      },
+      {
+        id: 'villa',
+        name: 'فيلا عائلية (Villa)',
+        category: 'residential',
+        icon: 'castle',
+        desc: 'استهلاك عائلي مرتفع يدخل الشريحة الثانية بعد 6,000 كيلوواط ساعة',
+        schedule: 'على مدار الساعة — عائلي واسع',
+        tariffMode: 'residential',
+        tariffTier1Rate: 0.18,
+        tariffTier2Rate: 0.30,
+        meterFee: 15.00,
+        devices: [
+          { id: 'vil-1', name: 'تكييف مركزي جزئي (الصالة الكبرى)', room: 'الصالة', wattage: 4500, quantity: 1, hoursPerDay: 14, daysPerMonth: 30, isActive: true, icon: 'wind' },
+          { id: 'vil-2', name: 'مكيف سبليت المجلس والملحق (2 طن)', room: 'المجلس', wattage: 2200, quantity: 2, hoursPerDay: 8, daysPerMonth: 30, isActive: true, icon: 'wind' },
+          { id: 'vil-3', name: 'مكيفات غرف النوم (1.5 طن)', room: 'غرف النوم', wattage: 1500, quantity: 3, hoursPerDay: 10, daysPerMonth: 30, isActive: true, icon: 'wind' },
+          { id: 'vil-4', name: 'سخانات مياه مجمعة', room: 'دورات المياه', wattage: 1500, quantity: 3, hoursPerDay: 6, daysPerMonth: 30, isActive: true, icon: 'flame' },
+          { id: 'vil-5', name: 'ثلاجة كبيرة وفريزر أفقي', room: 'المطبخ', wattage: 380, quantity: 1, hoursPerDay: 24, daysPerMonth: 30, isActive: true, icon: 'refrigerator' },
+          { id: 'vil-6', name: 'مضخة مياه دينمو السطح (1.5 حصان)', room: 'الخدمات', wattage: 1100, quantity: 1, hoursPerDay: 3, daysPerMonth: 30, isActive: true, icon: 'zap' },
+          { id: 'vil-7', name: 'نشافة ملابس حرارية', room: 'المطبخ', wattage: 3000, quantity: 1, hoursPerDay: 2, daysPerMonth: 15, isActive: true, icon: 'sun' },
+          { id: 'vil-8', name: 'فرن كهربائي مدمج', room: 'المطبخ', wattage: 2600, quantity: 1, hoursPerDay: 1.5, daysPerMonth: 30, isActive: true, icon: 'zap' },
+          { id: 'vil-9', name: 'إنارة الواجهات الخارجية والحديقة', room: 'الحديقة', wattage: 20, quantity: 15, hoursPerDay: 10, daysPerMonth: 30, isActive: true, icon: 'lightbulb' },
+          { id: 'vil-10', name: 'غسالة صحون أوتوماتيك', room: 'المطبخ', wattage: 1800, quantity: 1, hoursPerDay: 1.5, daysPerMonth: 25, isActive: true, icon: 'washing-machine' },
+          { id: 'vil-11', name: 'مضخة تنظيف وفلترة الفناء (مرتين أسبوعياً)', room: 'الحديقة', wattage: 1400, quantity: 1, hoursPerDay: 1.5, daysPerMonth: 8, isActive: true, icon: 'zap' },
+          { id: 'vil-12', name: 'نظام كوي الملابس البخاري (مرة أسبوعياً)', room: 'الخدمات', wattage: 2400, quantity: 1, hoursPerDay: 2, daysPerMonth: 4, isActive: true, icon: 'flame' }
+        ]
+      },
+      {
+        id: 'school',
+        name: 'مدرسة تعليمية (School)',
+        category: 'institutional',
+        icon: 'graduation-cap',
+        desc: 'استهلاك مؤسسي بجدول زمني (الأحد - الخميس، 7:00 ص - 2:00 م)',
+        schedule: 'أيام الدراسة (أحد - خميس: 7 ص إلى 2 م) — 22 يوم/شهر',
+        tariffMode: 'commercial',
+        flatCommercialRate: 0.26,
+        meterFee: 25.00,
+        devices: [
+          { id: 'sch-1', name: 'مكيفات الفصول الدراسية (2 طن سبليت)', room: 'الفصول', wattage: 2200, quantity: 12, hoursPerDay: 7, daysPerMonth: 22, isActive: true, icon: 'wind' },
+          { id: 'sch-2', name: 'تكييف مكاتب الإدارة والمعلمين', room: 'الإدارة', wattage: 1800, quantity: 3, hoursPerDay: 7, daysPerMonth: 22, isActive: true, icon: 'wind' },
+          { id: 'sch-3', name: 'أجهزة حاسب آلي معمل التقنية (30 جهاز)', room: 'المعمل', wattage: 250, quantity: 30, hoursPerDay: 4, daysPerMonth: 22, isActive: true, icon: 'tv' },
+          { id: 'sch-4', name: 'برادات ومبردات مياه شرب الطلاب', room: 'الساحة', wattage: 650, quantity: 4, hoursPerDay: 8, daysPerMonth: 22, isActive: true, icon: 'refrigerator' },
+          { id: 'sch-5', name: 'إضاءة الفصول والممرات (LED)', room: 'الفصول', wattage: 36, quantity: 40, hoursPerDay: 7, daysPerMonth: 22, isActive: true, icon: 'lightbulb' },
+          { id: 'sch-6', name: 'مكيف صالة الأنشطة والمسرح (Package)', room: 'المسرح', wattage: 6500, quantity: 1, hoursPerDay: 2, daysPerMonth: 10, isActive: false, icon: 'wind' },
+          { id: 'sch-7', name: 'مضخات ري الملاعب والتشجير', room: 'الخارج', wattage: 1500, quantity: 1, hoursPerDay: 1.5, daysPerMonth: 22, isActive: true, icon: 'zap' },
+          { id: 'sch-8', name: 'أجهزة عرض وبروجكتورات الفصول', room: 'الفصول', wattage: 280, quantity: 12, hoursPerDay: 4, daysPerMonth: 22, isActive: true, icon: 'tv' },
+          { id: 'sch-9', name: 'آلات تصوير وطباعة الاختبارات (مرتين أسبوعياً)', room: 'الإدارة', wattage: 1400, quantity: 2, hoursPerDay: 2, daysPerMonth: 8, isActive: true, icon: 'zap' },
+          { id: 'sch-10', name: 'نظام الصوتيات والإذاعة للفعاليات (مرة أسبوعياً)', room: 'المسرح', wattage: 1200, quantity: 1, hoursPerDay: 2, daysPerMonth: 4, isActive: true, icon: 'zap' }
+        ]
+      },
+      {
+        id: 'commercial',
+        name: 'مبنى تجاري / مكاتب (Commercial)',
+        category: 'commercial',
+        icon: 'building',
+        desc: 'تشغيل يومي مكثف طويل، تكييف مركزي وغرفة خوادم مستمرة',
+        schedule: 'يومياً (8:00 ص إلى 8:00 م) + أنظمة حرجة 24/7',
+        tariffMode: 'commercial',
+        flatCommercialRate: 0.26,
+        meterFee: 40.00,
+        devices: [
+          { id: 'com-1', name: 'نظام تكييف مركزي مبردات Chillers', room: 'الأدوار', wattage: 16000, quantity: 1, hoursPerDay: 12, daysPerMonth: 28, isActive: true, icon: 'wind' },
+          { id: 'com-2', name: 'تبريد غرفة الخوادم والداتا سنتر (Precision AC)', room: 'السيرفرات', wattage: 3200, quantity: 1, hoursPerDay: 24, daysPerMonth: 30, isActive: true, icon: 'wind' },
+          { id: 'com-3', name: 'خوادم وشبكة الاتصالات ومقاسم الهاتف', room: 'السيرفرات', wattage: 1800, quantity: 1, hoursPerDay: 24, daysPerMonth: 30, isActive: true, icon: 'zap' },
+          { id: 'com-4', name: 'محطات عمل وشاشات الموظفين (40 مكتب)', room: 'المكاتب', wattage: 180, quantity: 40, hoursPerDay: 9, daysPerMonth: 26, isActive: true, icon: 'tv' },
+          { id: 'com-5', name: 'محركات المصاعد الكهربائية (2 مصعد)', room: 'المصاعد', wattage: 4500, quantity: 2, hoursPerDay: 6, daysPerMonth: 28, isActive: true, icon: 'zap' },
+          { id: 'com-6', name: 'إضاءة بنلات المكاتب السقفية (LED)', room: 'المكاتب', wattage: 40, quantity: 60, hoursPerDay: 12, daysPerMonth: 28, isActive: true, icon: 'lightbulb' },
+          { id: 'com-7', name: 'ماكينات القهوة وتجهيزات الكافتيريا', room: 'الكافتيريا', wattage: 2400, quantity: 2, hoursPerDay: 4, daysPerMonth: 26, isActive: true, icon: 'flame' },
+          { id: 'com-8', name: 'شاشات العرض الرقمي ببهو الاستقبال', room: 'الاستقبال', wattage: 350, quantity: 3, hoursPerDay: 12, daysPerMonth: 28, isActive: true, icon: 'tv' },
+          { id: 'com-9', name: 'طابعات ليزر مركزية عالية السرعة (مرتين أسبوعياً)', room: 'المكاتب', wattage: 1600, quantity: 2, hoursPerDay: 2, daysPerMonth: 8, isActive: true, icon: 'zap' },
+          { id: 'com-10', name: 'معدات قاعة الاجتماعات الكبرى (مرة أسبوعياً)', room: 'الاجتماعات', wattage: 2200, quantity: 1, hoursPerDay: 3, daysPerMonth: 4, isActive: true, icon: 'tv' }
+        ]
+      }
+    ];
+
+    // --- Device Presets for Add Modal ---
+    const PRESETS = [
+      { name: 'مكيف سبليت (1.5 طن / 18,000 وحدة)', wattage: 1500, room: 'غرفة النوم', icon: 'wind' },
+      { name: 'مكيف سبليت (2 طن / 24,000 وحدة)', wattage: 2200, room: 'الصالة', icon: 'wind' },
+      { name: 'تكييف مركزي كبير (Package/Chiller)', wattage: 8000, room: 'المبنى', icon: 'wind' },
+      { name: 'سخان مياه كهربائي', wattage: 1500, room: 'دورة المياه', icon: 'flame' },
+      { name: 'ثلاجة / فريزر موفرة (إنفرتر)', wattage: 180, room: 'المطبخ', icon: 'refrigerator' },
+      { name: 'غسالة ملابس ومجفف أوتوماتيك', wattage: 1800, room: 'الخدمات', icon: 'washing-machine' },
+      { name: 'نشافة ملابس حرارية', wattage: 3000, room: 'المطبخ', icon: 'sun' },
+      { name: 'كمبيوتر محطة عمل / ألعاب', wattage: 450, room: 'المكتب', icon: 'tv' },
+      { name: 'شاشة ذكية 65 بوصة', wattage: 140, room: 'الصالة', icon: 'tv' },
+      { name: 'مضخة مياه (دينمو 1.5 حصان)', wattage: 1100, room: 'الخدمات', icon: 'zap' },
+      { name: 'شاحن سيارة كهربائية (منزلي Level 2)', wattage: 7400, room: 'المرآب', icon: 'zap' },
+      { name: 'إضاءة مجموعة LED (10 لمبات)', wattage: 90, room: 'الممرات', icon: 'lightbulb' }
+    ];
+
+    // --- Clean SVG Icons ---
+    const Icon = ({ name, className = "w-5 h-5", ...props }) => {
+      switch (name) {
+        case 'home':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          );
+        case 'castle':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <path d="M22 20v-9H2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2Z"/><path d="M18 11V4H6v7"/><path d="M15 22v-4a3 3 0 0 0-6 0v4"/><path d="M22 11V9"/><path d="M2 11V9"/><path d="M6 4V2"/><path d="M18 4V2"/><path d="M10 4V2"/><path d="M14 4V2"/>
+            </svg>
+          );
+        case 'graduation-cap':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <path d="M21.42 10.922a1 1 0 0 0-.019-.838L12.83 3.18a2 2 0 0 0-1.66 0L2.6 10.084a1 1 0 0 0 0 1.832l8.57 6.908a2 2 0 0 0 1.66 0l6.71-5.409"/><path d="M6 12.5v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/>
+            </svg>
+          );
+        case 'building':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>
+            </svg>
+          );
+        case 'wind':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
+            </svg>
+          );
+        case 'zap':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          );
+        case 'flame':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+            </svg>
+          );
+        case 'refrigerator':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <rect width="14" height="20" x="5" y="2" rx="2"/><path d="M5 10h14"/><path d="M15 6v1"/><path d="M15 14v2"/>
+            </svg>
+          );
+        case 'washing-machine':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <path d="M3 6h3"/><path d="M17 6h.01"/><rect width="18" height="20" x="3" y="2" rx="2"/><circle cx="12" cy="13" r="5"/><path d="M12 18a2.5 2.5 0 0 0 0-5 2.5 2.5 0 0 1 0-5"/>
+            </svg>
+          );
+        case 'tv':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <rect width="20" height="15" x="2" y="7" rx="2"/><polyline points="17 2 12 7 7 2"/>
+            </svg>
+          );
+        case 'lightbulb':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>
+            </svg>
+          );
+        case 'leaf':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+            </svg>
+          );
+        case 'tree':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <path d="m12 2 8 10h-5l4 7H5l4-7H4l8-10Z"/><path d="M12 19v3"/>
+            </svg>
+          );
+        case 'pulse':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          );
+        case 'printer':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/>
+            </svg>
+          );
+        case 'plus':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+          );
+        case 'minus':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+          );
+        case 'play':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+          );
+        case 'pause':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
+            </svg>
+          );
+        case 'edit':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          );
+        case 'trash':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+          );
+        case 'award':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+            </svg>
+          );
+        case 'sun':
+        case 'sun-dim':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+          );
+        case 'moon':
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+          );
+        default:
+          return (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+          );
+      }
+    };
+
+    // --- Main Application Component ---
+    function KafaaApp() {
+      const appName = 'كفاءة';
+
+      // Customer Name State & Initial Prompt Modal
+      const [customerName, setCustomerName] = useState(() => {
+        const savedName = localStorage.getItem('kafaa_customer_name');
+        return savedName && !['عميل تجريبي', 'أحمد', 'عبدالله', 'فلان بن علان الفلاني'].includes(savedName)
+          ? savedName
+          : DEFAULT_CUSTOMER_NAME;
+      });
+      const [showWelcomeNameModal, setShowWelcomeNameModal] = useState(true);
+
+      // Fixed Electricity Bill Program (برنامج الفاتورة الثابتة - SEC Fixed Bill)
+      const [isFixedBill, setIsFixedBill] = useState(() => {
+        const saved = localStorage.getItem('kafaa_fixed_bill');
+        return saved ? JSON.parse(saved) : false;
+      });
+
+      useEffect(() => {
+        localStorage.setItem('kafaa_fixed_bill', JSON.stringify(isFixedBill));
+      }, [isFixedBill]);
+
+      // Dark Mode State
+      const [isDark, setIsDark] = useState(() => {
+        const saved = localStorage.getItem('kafaa_theme');
+        if (saved) return saved === 'dark';
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      });
+
+      // Active View Tab: 'telemetry' | 'devices' | 'analytics' | 'audit'
+      const [activeView, setActiveView] = useState('telemetry');
+
+      // Facilities State (Multi-Profile - v5 key for updated device list)
+      const [facilities, setFacilities] = useState(() => {
+        const saved = localStorage.getItem('kafaa_facilities_v5');
+        if (saved) {
+          try { return JSON.parse(saved); } catch (e) {}
+        }
+        return DEFAULT_FACILITIES;
+      });
+
+      // Active Facility ID
+      const [activeFacilityId, setActiveFacilityId] = useState(() => {
+        return localStorage.getItem('kafaa_active_facility') || 'apartment';
+      });
+
+      const activeFacility = useMemo(() => {
+        return facilities.find(f => f.id === activeFacilityId) || facilities[0];
+      }, [facilities, activeFacilityId]);
+
+      const [soundEnabled] = useState(true);
+
+      // Simulation Engine State
+      const [isLiveRunning, setIsLiveRunning] = useState(true);
+      const [simSpeed, setSimSpeed] = useState(1);
+      const [voltage, setVoltage] = useState(220.5);
+      const [driftOffset, setDriftOffset] = useState(0);
+      const [telemetryHistory, setTelemetryHistory] = useState([]);
+      const [eventFeed, setEventFeed] = useState([
+        { id: 1, text: 'استقرار تردد الشبكة (60 هرتز)', type: 'normal', time: '17:20:00', delta: '+0 واط' },
+        { id: 2, text: 'بدء بث القراءات الحية المتدفقة', type: 'info', time: '17:21:15', delta: 'نشط' }
+      ]);
+      const [accumulatedCostSar, setAccumulatedCostSar] = useState(0);
+
+      // Modals
+      const [showAddFacilityModal, setShowAddFacilityModal] = useState(false);
+      const [showDeviceModal, setShowDeviceModal] = useState(false);
+      const [editingDevice, setEditingDevice] = useState(null);
+      const [selectedRoomFilter, setSelectedRoomFilter] = useState('الكل');
+      const [searchQuery, setSearchQuery] = useState('');
+
+      useEffect(() => {
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('kafaa_theme', 'dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('kafaa_theme', 'light');
+        }
+      }, [isDark]);
+
+      useEffect(() => {
+        if (customerName) {
+          localStorage.setItem('kafaa_customer_name', customerName);
+        }
+      }, [customerName]);
+
+      useEffect(() => {
+        localStorage.setItem('kafaa_facilities_v5', JSON.stringify(facilities));
+      }, [facilities]);
+
+      useEffect(() => {
+        localStorage.setItem('kafaa_active_facility', activeFacilityId);
+      }, [activeFacilityId]);
+
+      useEffect(() => {
+        document.title = 'مَنَصَّةُ كَفَاءةِ | الهيئة الوطنية لإدارة الطاقة';
+      }, []);
+
+      // Base Watts
+      const baseWatts = useMemo(() => {
+        if (!activeFacility || !activeFacility.devices) return 0;
+        return activeFacility.devices
+          .filter(d => d.isActive)
+          .reduce((sum, d) => sum + (d.wattage * d.quantity), 0);
+      }, [activeFacility]);
+
+      // Monthly Total Energy (kWh)
+      const monthlyTotalKwh = useMemo(() => {
+        if (!activeFacility || !activeFacility.devices) return 0;
+        return activeFacility.devices.reduce((acc, d) => {
+          if (!d.isActive) return acc;
+          return acc + ((d.wattage * d.quantity * d.hoursPerDay * d.daysPerMonth) / 1000);
+        }, 0);
+      }, [activeFacility]);
+
+      // Saudi Tariff Calculation + Fixed Bill Rounding to nearest 0 or 5 with .00 halalas
+      const billDetails = useMemo(() => {
+        const isCommercial = activeFacility.tariffMode === 'commercial';
+        const kwh = monthlyTotalKwh;
+        const meter = activeFacility.meterFee || 10.00;
+
+        let tier1Kwh = 0;
+        let tier2Kwh = 0;
+        let tier1Cost = 0;
+        let tier2Cost = 0;
+        let energyCost = 0;
+        let isTier2 = false;
+
+        if (isCommercial) {
+          const rate = activeFacility.flatCommercialRate || 0.26;
+          energyCost = kwh * rate;
+          tier1Kwh = kwh;
+          tier1Cost = energyCost;
+        } else {
+          const tier1Limit = 6000;
+          tier1Kwh = Math.min(kwh, tier1Limit);
+          tier2Kwh = Math.max(0, kwh - tier1Limit);
+          tier1Cost = tier1Kwh * (activeFacility.tariffTier1Rate || 0.18);
+          tier2Cost = tier2Kwh * (activeFacility.tariffTier2Rate || 0.30);
+          energyCost = tier1Cost + tier2Cost;
+          isTier2 = tier2Kwh > 0;
+        }
+
+        const subtotal = energyCost + meter;
+        const vat = subtotal * 0.15;
+        const baseGrandTotal = subtotal + vat;
+        const priceAdjustment = baseGrandTotal * PRICE_ADJUSTMENT_RATE;
+        const grandTotal = baseGrandTotal + priceAdjustment;
+
+        // Calculate Fixed Monthly Average: zero halalas (.00) and ends strictly with 0 or 5
+        const seasonalAvg = grandTotal * 0.96; // Realistic 12-month smoothed average
+        const fixedMonthlyTotal = Math.max(5, Math.round(seasonalAvg / 5) * 5);
+
+        const activeTotal = isFixedBill ? fixedMonthlyTotal : grandTotal;
+        const dailyAvg = activeTotal / 30;
+
+        return {
+          isCommercial,
+          tier1Kwh,
+          tier2Kwh,
+          tier1Cost,
+          tier2Cost,
+          energyCost,
+          meter,
+          subtotal,
+          vat,
+          priceAdjustment,
+          grandTotal,
+          fixedMonthlyTotal,
+          activeTotal,
+          dailyAvg,
+          isTier2,
+          tier1Percent: Math.min(100, (kwh / 6000) * 100),
+          remainingToTier2: Math.max(0, 6000 - kwh)
+        };
+      }, [monthlyTotalKwh, activeFacility, isFixedBill]);
+
+      // Environmental Sustainability Metrics
+      const ecoImpact = useMemo(() => {
+        const carbonFactor = 0.65;
+        const treeAbsorption = 1.75;
+        
+        const currentCarbonKg = monthlyTotalKwh * carbonFactor;
+        const baselineKwh = monthlyTotalKwh * 1.25;
+        const savedKwh = Math.max(0, baselineKwh - monthlyTotalKwh);
+        const savedCarbonKg = savedKwh * carbonFactor;
+        const treesEquivalent = Math.max(0.1, (savedCarbonKg / treeAbsorption));
+
+        const maxKwhBaseline = activeFacility.category === 'commercial' ? 35000 : activeFacility.category === 'institutional' ? 18000 : 8000;
+        const efficiencyScore = Math.min(98, Math.max(15, Math.round((1 - (monthlyTotalKwh / (maxKwhBaseline * 1.1))) * 100)));
+
+        return {
+          currentCarbonKg: Math.round(currentCarbonKg),
+          savedKwh: Math.round(savedKwh),
+          savedCarbonKg: Math.round(savedCarbonKg),
+          treesEquivalent: treesEquivalent.toFixed(1),
+          annualTreesEquivalent: Math.round(treesEquivalent * 12),
+          efficiencyScore
+        };
+      }, [monthlyTotalKwh, activeFacility]);
+
+      // Live Telemetry Engine
+      useEffect(() => {
+        if (!isLiveRunning) return;
+
+        const intervalMs = Math.max(250, 1500 / simSpeed);
+
+        const timer = setInterval(() => {
+          const newVolt = Number((218 + (Math.random() * 5.8)).toFixed(1));
+          setVoltage(newVolt);
+
+          const driftPercent = (Math.random() * 0.30) - 0.12;
+          const currentDriftWatts = Math.round(baseWatts * driftPercent);
+          setDriftOffset(currentDriftWatts);
+
+          let currentSpikeWatts = 0;
+          if (Math.random() < 0.20 && baseWatts > 0) {
+            const timeStr = formatTimeEn();
+            
+            const eventPool = [
+              { text: 'انطلاق ضاغط مكيف الصالة / الكمبروسر (+1,450 واط)', delta: 1450, type: 'spike' },
+              { text: 'تشغيل مضخة المياه الدينمو / السخان (+1,200 واط)', delta: 1200, type: 'spike' },
+              { text: 'فصل ثيرموستات المكيف تلقائياً (-1,380 واط)', delta: -1380, type: 'drop' },
+              { text: 'فصل دورة تسخين سخان المياه (-950 واط)', delta: -950, type: 'drop' },
+              { text: 'ارتفاع مفاجئ في سحب الشبكة (حمل ذروة متزامن)', delta: 2100, type: 'surge' },
+              { text: 'تشغيل أجهزة الحاسب والمعالجة الرقمية (+780 واط)', delta: 780, type: 'spike' },
+              { text: 'بدء دورة غسيل وتجفيف أوتوماتيكية (+1,600 واط)', delta: 1600, type: 'spike' }
+            ];
+
+            const chosen = eventPool[Math.floor(Math.random() * eventPool.length)];
+            currentSpikeWatts = chosen.delta;
+
+            setEventFeed(prev => [
+              {
+                id: Date.now(),
+                text: chosen.text,
+                type: chosen.type,
+                time: timeStr,
+                delta: (chosen.delta > 0 ? `+${formatNumber(chosen.delta)}` : `${formatNumber(chosen.delta)}`) + ' واط'
+              },
+              ...prev.slice(0, 19)
+            ]);
+          }
+
+          const calculatedWatts = Math.max(0, Math.round(baseWatts + currentDriftWatts + currentSpikeWatts));
+          const calculatedKw = calculatedWatts / 1000;
+          const calculatedAmps = Number((calculatedWatts / newVolt).toFixed(1));
+          const timestamp = formatTimeEn();
+
+          setTelemetryHistory(prev => {
+            const next = [...prev, {
+              time: timestamp,
+              watts: calculatedWatts,
+              kw: calculatedKw,
+              voltage: newVolt,
+              current: calculatedAmps
+            }];
+            return next.length > 30 ? next.slice(next.length - 30) : next;
+          });
+
+          const effectiveKwhRate = activeFacility.tariffMode === 'commercial' 
+            ? (activeFacility.flatCommercialRate || 0.26) 
+            : (monthlyTotalKwh > 6000 ? 0.30 : 0.18);
+          
+          const costDelta = ((calculatedWatts / 1000) * effectiveKwhRate * 1.15 / 3600) * (1.5 * simSpeed) * (1 + PRICE_ADJUSTMENT_RATE);
+          setAccumulatedCostSar(prev => prev + costDelta);
+
+        }, intervalMs);
+
+        return () => clearInterval(timer);
+      }, [isLiveRunning, simSpeed, baseWatts, activeFacility, monthlyTotalKwh]);
+
+      const latestReading = telemetryHistory[telemetryHistory.length - 1] || {
+        watts: baseWatts,
+        kw: (baseWatts / 1000).toFixed(2),
+        voltage: 220.5,
+        current: (baseWatts / 220.5).toFixed(1)
+      };
+
+      const handleSimulatePeakSurge = () => {
+        if (soundEnabled) playHapticSound('surge');
+        const surgeWatts = Math.round(3000 + (Math.random() * 2500));
+        const timeStr = formatTimeEn();
+
+        setEventFeed(prev => [
+          {
+            id: Date.now(),
+            text: `⚠️ ضغط ذروة متزامن محاكى يدوياً (+${formatNumber(surgeWatts)} واط)! استجابة الحماية الذكية.`,
+            type: 'surge',
+            time: timeStr,
+            delta: `+${formatNumber(surgeWatts)} واط`
+          },
+          ...prev.slice(0, 19)
+        ]);
+
+        setTelemetryHistory(prev => [
+          ...prev,
+          {
+            time: timeStr,
+            watts: Math.round(baseWatts + surgeWatts),
+            kw: ((baseWatts + surgeWatts) / 1000).toFixed(2),
+            voltage: 217.2,
+            current: (((baseWatts + surgeWatts) / 217.2)).toFixed(1)
+          }
+        ]);
+      };
+
+      const handleToggleDevice = (deviceId) => {
+        if (soundEnabled) playHapticSound('toggle');
+        setFacilities(prev => prev.map(fac => {
+          if (fac.id !== activeFacility.id) return fac;
+          return {
+            ...fac,
+            devices: fac.devices.map(d => d.id === deviceId ? { ...d, isActive: !d.isActive } : d)
+          };
+        }));
+      };
+
+      const handleHoursChange = (deviceId, delta) => {
+        if (soundEnabled) playHapticSound('click');
+        setFacilities(prev => prev.map(fac => {
+          if (fac.id !== activeFacility.id) return fac;
+          return {
+            ...fac,
+            devices: fac.devices.map(d => {
+              if (d.id !== deviceId) return d;
+              const newHours = Math.max(0.5, Math.min(24, Math.round((d.hoursPerDay + delta) * 10) / 10));
+              return { ...d, hoursPerDay: newHours };
+            })
+          };
+        }));
+      };
+
+      const handleDeleteDevice = (deviceId) => {
+        if (soundEnabled) playHapticSound('click');
+        if (confirm('هل أنت متأكد من حذف هذا الجهاز من المنشأة الحالية؟')) {
+          setFacilities(prev => prev.map(fac => {
+            if (fac.id !== activeFacility.id) return fac;
+            return {
+              ...fac,
+              devices: fac.devices.filter(d => d.id !== deviceId)
+            };
+          }));
+        }
+      };
+
+      const handleSaveDevice = (deviceData) => {
+        if (soundEnabled) playHapticSound('click');
+        setFacilities(prev => prev.map(fac => {
+          if (fac.id !== activeFacility.id) return fac;
+          if (editingDevice) {
+            return {
+              ...fac,
+              devices: fac.devices.map(d => d.id === editingDevice.id ? { ...deviceData, id: d.id } : d)
+            };
+          } else {
+            return {
+              ...fac,
+              devices: [{ ...deviceData, id: 'dev-' + Date.now(), isActive: true }, ...fac.devices]
+            };
+          }
+        }));
+        setShowDeviceModal(false);
+        setEditingDevice(null);
+      };
+
+      const handleCreateFacility = (facilityData) => {
+        if (soundEnabled) playHapticSound('click');
+        const newId = 'fac-' + Date.now();
+        const newFac = {
+          id: newId,
+          name: facilityData.name,
+          category: facilityData.category,
+          icon: facilityData.category === 'commercial' ? 'building' : facilityData.category === 'institutional' ? 'graduation-cap' : 'home',
+          desc: facilityData.desc || 'منشأة مخصصة تم إنشاؤها يدوياً',
+          schedule: facilityData.schedule || 'جدول تشغيل مخصص',
+          tariffMode: facilityData.tariffMode,
+          tariffTier1Rate: facilityData.tariffMode === 'residential' ? 0.18 : undefined,
+          tariffTier2Rate: facilityData.tariffMode === 'residential' ? 0.30 : undefined,
+          flatCommercialRate: facilityData.tariffMode === 'commercial' ? Number(facilityData.flatRate || 0.26) : undefined,
+          meterFee: Number(facilityData.meterFee || 15.00),
+          devices: [
+            { id: 'f1-1', name: 'مكيف هواء رئيسي (2 طن)', room: 'المساحة الرئيسية', wattage: 2200, quantity: 2, hoursPerDay: 10, daysPerMonth: 30, isActive: true, icon: 'wind' },
+            { id: 'f1-2', name: 'إضاءة المنشأة (مجموعات LED)', room: 'عام', wattage: 40, quantity: 10, hoursPerDay: 8, daysPerMonth: 30, isActive: true, icon: 'lightbulb' },
+            { id: 'f1-3', name: 'أجهزة ومعدات أساسية', room: 'عام', wattage: 500, quantity: 1, hoursPerDay: 12, daysPerMonth: 30, isActive: true, icon: 'zap' }
+          ]
+        };
+        setFacilities(prev => [...prev, newFac]);
+        setActiveFacilityId(newId);
+        setShowAddFacilityModal(false);
+      };
+
+      const availableRooms = useMemo(() => {
+        const set = new Set();
+        (activeFacility.devices || []).forEach(d => set.add(d.room));
+        return ['الكل', ...Array.from(set)];
+      }, [activeFacility]);
+
+      const filteredDevices = useMemo(() => {
+        return (activeFacility.devices || []).filter(d => {
+          const roomMatch = selectedRoomFilter === 'الكل' || d.room === selectedRoomFilter;
+          const queryMatch = !searchQuery || d.name.toLowerCase().includes(searchQuery.toLowerCase()) || d.room.includes(searchQuery);
+          return roomMatch && queryMatch;
+        });
+      }, [activeFacility, selectedRoomFilter, searchQuery]);
+
+      const topDevices = useMemo(() => {
+        return [...(activeFacility.devices || [])]
+          .filter(d => d.isActive)
+          .map(d => {
+            const kwh = (d.wattage * d.quantity * d.hoursPerDay * d.daysPerMonth) / 1000;
+            const percent = monthlyTotalKwh > 0 ? ((kwh / monthlyTotalKwh) * 100) : 0;
+            const rate = activeFacility.tariffMode === 'commercial' ? (activeFacility.flatCommercialRate || 0.26) : (billDetails.isTier2 ? 0.24 : 0.18);
+            const cost = kwh * rate * 1.15 * (1 + PRICE_ADJUSTMENT_RATE);
+            return { ...d, kwh, percent, cost };
+          })
+          .sort((a, b) => b.kwh - a.kwh)
+          .slice(0, 5);
+      }, [activeFacility, monthlyTotalKwh, billDetails]);
+
+      const handleTriggerPrint = () => {
+        if (soundEnabled) playHapticSound('click');
+        if (window.electronAPI && window.electronAPI.print) {
+          window.electronAPI.print();
+        } else {
+          window.print();
+        }
+      };
+
+      const handleWelcomeNameSave = (enteredName) => {
+        const finalName = enteredName.trim() || DEFAULT_CUSTOMER_NAME;
+        setCustomerName(finalName);
+        localStorage.setItem('kafaa_customer_name', finalName);
+        localStorage.setItem('kafaa_customer_name_initialized', 'true');
+        setShowWelcomeNameModal(false);
+        if (soundEnabled) playHapticSound('click');
+      };
+
+      return (
+        <div className="min-h-screen flex flex-col transition-colors duration-300">
+
+          {/* ===================== TOP HEADER & NAVIGATION (NO-PRINT) ===================== */}
+          <header className="no-print sticky top-0 z-40 bg-white/85 dark:bg-[#121215]/90 backdrop-blur-2xl border-b border-black/[0.06] dark:border-white/[0.08] px-4 lg:px-8 py-3 select-none">
+            <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+              
+              {/* Brand & Platform Identity */}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-apple-blue to-[#0051A8] flex items-center justify-center text-white shadow-md shadow-apple-blue/25">
+                  <Icon name="zap" className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-heading font-black text-xl text-gray-950 dark:text-white">{appName}</span>
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-apple-blue/10 text-apple-blue">
+                      إدارة الطاقة
+                    </span>
+                  </div>
+                  <p className="text-xs text-apple-gray dark:text-gray-400 font-medium">
+                    إدارة استهلاك الطاقة والاستدامة البيئية بالمملكة
+                  </p>
+                </div>
+              </div>
+
+              {/* Central Navigation Pills */}
+              <div className="hidden md:flex items-center bg-black/[0.04] dark:bg-white/[0.06] p-1 rounded-2xl border border-black/[0.04] dark:border-white/[0.05] text-xs font-bold">
+                <button
+                  onClick={() => { setActiveView('telemetry'); if(soundEnabled) playHapticSound('click'); }}
+                  className={`px-4 py-2 rounded-xl transition-all ${
+                    activeView === 'telemetry'
+                      ? 'bg-white dark:bg-zinc-800 text-apple-blue dark:text-white shadow-sm'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
+                  }`}
+                >
+                  ⚡ المراقبة اللحظية والمحاكي
+                </button>
+                <button
+                  onClick={() => { setActiveView('devices'); if(soundEnabled) playHapticSound('click'); }}
+                  className={`px-4 py-2 rounded-xl transition-all ${
+                    activeView === 'devices'
+                      ? 'bg-white dark:bg-zinc-800 text-apple-blue dark:text-white shadow-sm'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
+                  }`}
+                >
+                  🔌 الأجهزة وساعات التشغيل
+                </button>
+                <button
+                  onClick={() => { setActiveView('analytics'); if(soundEnabled) playHapticSound('click'); }}
+                  className={`px-4 py-2 rounded-xl transition-all ${
+                    activeView === 'analytics'
+                      ? 'bg-white dark:bg-zinc-800 text-apple-green dark:text-white shadow-sm'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
+                  }`}
+                >
+                  🌿 الاستدامة البيئية
+                </button>
+                <button
+                  onClick={() => { setActiveView('audit'); if(soundEnabled) playHapticSound('click'); }}
+                  className={`px-4 py-2 rounded-xl transition-all ${
+                    activeView === 'audit'
+                      ? 'bg-white dark:bg-zinc-800 text-apple-purple dark:text-white shadow-sm'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
+                  }`}
+                >
+                  📑 نموذج التقرير
+                </button>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setShowWelcomeNameModal(true)}
+                  className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl border border-black/[0.06] dark:border-white/[0.08] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-xs font-bold text-gray-700 dark:text-gray-200 transition-colors"
+                  title="تعديل الاسم الظاهر في التقرير"
+                >
+                  <span>👤</span>
+                  <span className="max-w-[130px] truncate">{customerName || 'تحديد الاسم'}</span>
+                </button>
+
+                <button
+                  onClick={() => { setIsDark(!isDark); if(soundEnabled) playHapticSound('click'); }}
+                  className="p-2 rounded-xl border border-black/[0.06] dark:border-white/[0.08] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-gray-700 dark:text-gray-300 transition-colors"
+                  title={isDark ? "تفعيل الوضع النهاري" : "تفعيل الوضع الليلي"}
+                >
+                  <Icon name={isDark ? "sun-dim" : "moon"} className="w-4 h-4" />
+                </button>
+
+                {/* Prominent Print Button */}
+                <button
+                  onClick={handleTriggerPrint}
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-apple-blue hover:bg-apple-blue-hover text-white text-xs font-bold shadow-md shadow-apple-blue/20 transition-all active:scale-95"
+                  title="طباعة التقرير التقديري"
+                >
+                  <Icon name="printer" className="w-4 h-4" />
+                  <span>طباعة التقرير</span>
+                </button>
+              </div>
+
+            </div>
+          </header>
+
+          {/* ===================== SCREEN DASHBOARD CONTENT (NO-PRINT) ===================== */}
+          <div className="screen-dashboard-container flex-1 max-w-7xl w-full mx-auto p-4 lg:p-8 space-y-6">
+
+            {/* ===================== PROJECT INFORMATION BANNER ===================== */}
+            <div className="relative overflow-hidden bg-gradient-to-l from-blue-50 via-white to-emerald-50 dark:from-blue-950/60 dark:via-zinc-900 dark:to-emerald-950/50 rounded-3xl p-5 border border-blue-200/70 dark:border-emerald-800/50 shadow-apple">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-apple-blue to-apple-green text-white flex items-center justify-center flex-shrink-0 shadow-md shadow-apple-blue/20">
+                  <Icon name="award" className="w-6 h-6 stroke-[2.5]" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <h3 className="font-heading font-black text-base leading-relaxed text-emerald-950 dark:text-emerald-200">
+                      {PROJECT_STUDENTS}
+                    </h3>
+                    <span className="self-start sm:self-auto whitespace-nowrap text-xs font-black px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200 border border-blue-200 dark:border-blue-700">
+                      الشعبة {PROJECT_SECTION}
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-2">
+                    مشروع تعليمي لمتابعة استهلاك الطاقة وترشيدها.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Facility Switcher Cards Grid */}
+            <div className="bg-white dark:bg-apple-cardDark rounded-3xl p-5 border border-black/[0.06] dark:border-white/[0.08] shadow-apple space-y-3">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-heading font-black text-base text-gray-950 dark:text-white">
+                    اختر نوع المنشأة الحالية لمراقبة استهلاكها:
+                  </h3>
+                  <p className="text-xs text-apple-gray dark:text-gray-400 mt-0.5">
+                    التبديل يطبق نمط الأجهزة والجدول والتعريفة المحددة لكل منشأة
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowAddFacilityModal(true)}
+                  className="text-xs font-bold text-apple-blue hover:underline flex items-center gap-1"
+                >
+                  <Icon name="plus" className="w-3.5 h-3.5" />
+                  <span>إضافة منشأة مخصصة</span>
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                {facilities.map(fac => {
+                  const isSelected = fac.id === activeFacility.id;
+                  return (
+                    <button
+                      key={fac.id}
+                      onClick={() => { setActiveFacilityId(fac.id); if(soundEnabled) playHapticSound('click'); }}
+                      className={`text-right p-4 rounded-2xl border transition-all flex flex-col justify-between ${
+                        isSelected
+                          ? 'bg-apple-blue text-white border-apple-blue shadow-lg shadow-apple-blue/25 scale-[1.01]'
+                          : 'bg-black/[0.02] dark:bg-white/[0.03] border-black/[0.06] dark:border-white/[0.08] hover:border-apple-blue text-gray-800 dark:text-gray-200'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <div className={`w-8 h-8 rounded-xl flex items-center justify-center ${
+                          isSelected ? 'bg-white/20 text-white' : 'bg-apple-blue/10 text-apple-blue dark:text-[#2997FF]'
+                        }`}>
+                          <Icon name={fac.icon} className="w-4 h-4" />
+                        </div>
+                        {isSelected && (
+                          <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-white text-apple-blue">
+                            المنشأة النشطة
+                          </span>
+                        )}
+                      </div>
+                      <div>
+                        <h4 className="font-heading font-extrabold text-sm mb-1">{fac.name}</h4>
+                        <p className={`text-[11px] leading-relaxed ${isSelected ? 'text-white/80' : 'text-apple-gray dark:text-gray-400'}`}>
+                          {fac.desc}
+                        </p>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* ROUTING VIEWS */}
+            {activeView === 'audit' ? (
+              /* ===================== PRINT PREVIEW SCREEN ===================== */
+              <div className="space-y-6 animate-fade-in">
+                <div className="bg-white dark:bg-apple-cardDark rounded-3xl p-5 border border-black/[0.06] dark:border-white/[0.08] shadow-apple flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <h3 className="font-heading font-black text-lg text-gray-950 dark:text-white">
+                      معاينة التقرير التقديري
+                    </h3>
+                    <p className="text-xs text-apple-gray dark:text-gray-400 mt-0.5">
+                      يتضمن التقرير بيانات الاستهلاك والتكاليف التقديرية وخانة توقيع العميل.
+                    </p>
+                  </div>
+                  <button
+                    onClick={handleTriggerPrint}
+                    className="flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-apple-blue hover:bg-apple-blue-hover text-white text-xs font-bold shadow-md shadow-apple-blue/20"
+                  >
+                    <Icon name="printer" className="w-4 h-4" />
+                    <span>طباعة التقرير الآن</span>
+                  </button>
+                </div>
+
+                {/* The Visible Print Document on Screen */}
+                <div className="print-document-screen">
+                  <OfficialDocumentContent
+                    appName={appName}
+                    facility={activeFacility}
+                    billDetails={billDetails}
+                    isFixedBill={isFixedBill}
+                    ecoImpact={ecoImpact}
+                    latestReading={latestReading}
+                    customerName={customerName}
+                    onCustomerNameChange={setCustomerName}
+                  />
+                </div>
+              </div>
+            ) : activeView === 'analytics' ? (
+              <AnalyticsAndEcoView
+                facility={activeFacility}
+                billDetails={billDetails}
+                ecoImpact={ecoImpact}
+                topDevices={topDevices}
+              />
+            ) : activeView === 'devices' ? (
+              <DevicesManagementView
+                devices={filteredDevices}
+                allDevicesCount={activeFacility.devices?.length || 0}
+                rooms={availableRooms}
+                selectedRoom={selectedRoomFilter}
+                onSelectRoom={setSelectedRoomFilter}
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
+                onToggleDevice={handleToggleDevice}
+                onHoursChange={handleHoursChange}
+                onDeleteDevice={handleDeleteDevice}
+                onEditDevice={(d) => { setEditingDevice(d); setShowDeviceModal(true); }}
+                billDetails={billDetails}
+                onOpenAddDevice={() => { setEditingDevice(null); setShowDeviceModal(true); }}
+              />
+            ) : (
+              /* ===================== TELEMETRY & LIVE METERS ===================== */
+              <div className="space-y-6 animate-fade-in">
+                
+                {/* Simulation Control Bar */}
+                <div className="bg-white dark:bg-apple-cardDark rounded-2xl p-4 border border-black/[0.06] dark:border-white/[0.08] shadow-apple flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-3 h-3 rounded-full bg-apple-green animate-ping"></span>
+                    <span className="text-xs font-bold text-gray-900 dark:text-white">
+                      محرك القراءات الحية المتدفقة (تحديث كل 1.5 ثانية مع تذبذب عشوائي للأحمال)
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => { setIsLiveRunning(!isLiveRunning); if(soundEnabled) playHapticSound('toggle'); }}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-1.5 ${
+                        isLiveRunning ? 'bg-apple-green text-white' : 'bg-apple-orange text-white'
+                      }`}
+                    >
+                      <Icon name={isLiveRunning ? "pause" : "play"} className="w-3.5 h-3.5" />
+                      <span>{isLiveRunning ? 'البث قيد التشغيل' : 'استئناف البث'}</span>
+                    </button>
+
+                    <div className="flex items-center bg-black/[0.04] dark:bg-white/[0.06] p-0.5 rounded-xl border border-black/[0.04] dark:border-white/[0.05] text-xs font-bold num-font">
+                      {[1, 5, 10].map(speed => (
+                        <button
+                          key={speed}
+                          onClick={() => { setSimSpeed(speed); if(soundEnabled) playHapticSound('click'); }}
+                          className={`px-2.5 py-1 rounded-lg transition-all ${
+                            simSpeed === speed ? 'bg-white dark:bg-zinc-800 text-apple-blue dark:text-white shadow-sm' : 'text-gray-500'
+                          }`}
+                        >
+                          {speed}x
+                        </button>
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={handleSimulatePeakSurge}
+                      className="px-3 py-1.5 rounded-xl bg-apple-red/10 hover:bg-apple-red text-apple-red hover:text-white text-xs font-bold border border-apple-red/20 transition-all"
+                      title="محاكاة قفزة حمل فورية"
+                    >
+                      محاكاة ضغط ذروة عشوائي
+                    </button>
+                  </div>
+                </div>
+
+                {/* 3 Giant Bento Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                  {/* Card 1: Power Watts */}
+                  <div className="bg-white dark:bg-apple-cardDark rounded-3xl p-6 border border-black/[0.06] dark:border-white/[0.08] shadow-apple flex flex-col justify-between">
+                    <div>
+                      <span className="text-xs font-bold text-apple-gray dark:text-gray-400 block mb-3">
+                        ⚡ القدرة اللحظية المسحوبة
+                      </span>
+                      <div className="flex items-baseline gap-2 mb-2">
+                        <span className="text-5xl font-black font-heading text-gray-950 dark:text-white tabular-nums tracking-tight num-font">
+                          {formatNumber(latestReading.watts)}
+                        </span>
+                        <span className="text-base font-bold text-apple-gray">واط</span>
+                      </div>
+                      <div className="text-xs text-apple-gray dark:text-gray-400 space-y-1 pt-2">
+                        <p>الحمل بالكيلوواط: <strong className="text-gray-900 dark:text-white tabular-nums num-font">{formatNumber(latestReading.kw, 2)} كيلوواط</strong></p>
+                        <p>الجهد الكهربائي: <strong className="text-gray-900 dark:text-white tabular-nums num-font">{formatNumber(voltage, 1)} فولت</strong> (تذبذب 218–224 فولت)</p>
+                        <p>التيار المسحوب: <strong className="text-gray-900 dark:text-white tabular-nums num-font">{formatNumber(latestReading.current, 1)} أمبير</strong></p>
+                      </div>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-black/[0.05] dark:border-white/[0.06] text-[11px] text-apple-gray">
+                      الحمل الأساسي: <span className="num-font font-bold">{formatNumber(baseWatts)}</span> واط ({driftOffset >= 0 ? `+${formatNumber(driftOffset)}` : formatNumber(driftOffset)} واط تغير)
+                    </div>
+                  </div>
+
+                  {/* Card 2: Estimated monthly electricity bill */}
+                  <div className="bg-white dark:bg-apple-cardDark rounded-3xl p-6 border border-black/[0.06] dark:border-white/[0.08] shadow-apple flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-xs font-bold text-apple-gray dark:text-gray-400">
+                          💳 الفاتورة الشهرية التقديرية
+                        </span>
+                        <span className={`text-[10px] font-black px-2 py-0.5 rounded-full ${
+                          billDetails.isTier2 ? 'bg-apple-red/10 text-apple-red' : 'bg-apple-green/10 text-apple-green'
+                        }`}>
+                          {billDetails.isCommercial ? 'تعريفة تجارية' : billDetails.isTier2 ? 'الشريحة الثانية' : 'الشريحة الأولى'}
+                          {' '}
+                          <SaudiCurrencyDisplay
+                            amount={billDetails.isCommercial ? (activeFacility.flatCommercialRate || 0.26) : billDetails.isTier2 ? 0.30 : 0.18}
+                            decimals={2}
+                            size="text-[10px]"
+                            color={billDetails.isTier2 ? 'text-apple-red' : 'text-apple-green'}
+                          />
+                        </span>
+                      </div>
+                      
+                      <div className="mb-3">
+                        <SaudiCurrencyDisplay amount={billDetails.activeTotal} decimals={2} size="text-4xl" />
+                        <span className="block text-xs text-apple-gray mt-1">
+                          {isFixedBill
+                            ? '✅ فاتورة شهرية ثابتة'
+                            : 'تشمل رسوم العداد وضريبة القيمة المضافة (15%)'}
+                        </span>
+                      </div>
+
+                      <div className="space-y-1.5 text-xs text-apple-gray dark:text-gray-400 pt-2 border-t border-black/[0.05] dark:border-white/[0.06]">
+                        <div className="flex justify-between">
+                          <span>الاستهلاك التقديري:</span>
+                          <strong className="text-gray-900 dark:text-white tabular-nums num-font">{formatNumber(monthlyTotalKwh, 0)} كيلوواط ساعة / شهر</strong>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>المعدل اليومي:</span>
+                          <strong className="text-gray-900 dark:text-white tabular-nums">
+                            <SaudiCurrencyDisplay amount={billDetails.dailyAvg} decimals={2} size="text-xs" color="text-gray-700 dark:text-gray-300" /> / يوم
+                          </strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Fixed Bill Toggle */}
+                    <div className="mt-4 pt-3 border-t border-black/[0.05] dark:border-white/[0.06]">
+                      <button
+                        onClick={() => { setIsFixedBill(!isFixedBill); if(soundEnabled) playHapticSound('toggle'); }}
+                        className={`w-full flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl transition-all text-xs font-bold ${
+                          isFixedBill
+                            ? 'bg-apple-green/10 border border-apple-green/30 text-apple-green'
+                            : 'bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] text-gray-600 dark:text-gray-400'
+                        }`}
+                        title="تثبيت قيمة الفاتورة الشهرية التقديرية"
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="text-base">{isFixedBill ? '🔒' : '🔓'}</span>
+                          <div className="text-right">
+                            <div>{isFixedBill ? 'الفاتورة مثبتة شهرياً (مفعّل)' : 'تثبيت مبلغ الفاتورة الشهري'}</div>
+                            <div className="text-[10px] font-normal opacity-75">
+                              {isFixedBill
+                                ? <span className="inline-flex items-center gap-1">قسط ثابت: <SaudiCurrencyDisplay amount={billDetails.fixedMonthlyTotal} decimals={2} size="text-[10px]" color="text-apple-green" /></span>
+                                : 'يُحسب وفق متوسط الاستهلاك السنوي'}
+                            </div>
+                          </div>
+                        </div>
+                        <div className={`w-10 h-5 rounded-full transition-colors relative ${isFixedBill ? 'bg-apple-green' : 'bg-gray-300 dark:bg-gray-600'}`}>
+                          <span className={`absolute top-0.5 w-4 h-4 rounded-full bg-white shadow transition-all ${isFixedBill ? 'right-0.5' : 'left-0.5'}`} />
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Card 3: Ascending Halalas Ticker & Eco Trees */}
+                  <div className="bg-white dark:bg-apple-cardDark rounded-3xl p-6 border border-black/[0.06] dark:border-white/[0.08] shadow-apple flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-xs font-bold text-apple-green flex items-center gap-1">
+                          <Icon name="leaf" className="w-3.5 h-3.5" />
+                          الأثر البيئي والتكلفة التراكمية
+                        </span>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-apple-green/10 text-apple-green">
+                          السعودية الخضراء
+                        </span>
+                      </div>
+
+                      <div className="mb-3">
+                        <span className="text-[11px] text-apple-gray block mb-1" title="قيمة تقديرية تتراكم منذ بدء المحاكاة ولا تمثل الفاتورة الشهرية.">
+                          التكلفة المتراكمة منذ بدء المحاكاة:
+                        </span>
+                        <span className="inline-flex items-center gap-1 tabular-nums text-3xl font-black font-heading text-white" dir="ltr">
+                          <SaudiRiyalSymbol className="w-[0.9em] h-[0.9em] text-apple-blue dark:text-[#2997FF]" />
+                          <span className="font-bold tracking-tight num-font">{formatSimulationCost(accumulatedCostSar)}</span>
+                        </span>
+                        <p className="text-[9px] text-apple-gray dark:text-gray-400 mt-1">
+                          تبدأ من صفر وتزداد مع التشغيل؛ لا تمثل الفاتورة الشهرية.
+                        </p>
+                      </div>
+
+                      <div className="space-y-1.5 text-xs text-apple-gray dark:text-gray-400 pt-2 border-t border-black/[0.05] dark:border-white/[0.06]">
+                        <div className="flex justify-between">
+                          <span>انبعاثات CO₂ الشهرية التقديرية:</span>
+                          <strong className="text-gray-900 dark:text-white tabular-nums num-font">{formatNumber(ecoImpact.currentCarbonKg)} كجم</strong>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>كربون متوقع توفيره شهرياً:</span>
+                          <strong className="text-apple-cyan dark:text-[#30B0C7] tabular-nums num-font">{formatNumber(ecoImpact.savedCarbonKg)} كجم</strong>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>مكافئ امتصاص الأشجار شهرياً:</span>
+                          <strong className="text-apple-green tabular-nums num-font">🌲 {formatNumber(ecoImpact.treesEquivalent, 1)} شجرة</strong>
+                        </div>
+                        <p className="text-[9px] leading-relaxed pt-1 border-t border-black/[0.05] dark:border-white/[0.06]">
+                          تقدير مقارنةً بخط أساس أعلى 25%، وبمعدل امتصاص 1.75 كجم CO₂ للشجرة شهرياً.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 pt-3 border-t border-black/[0.05] dark:border-white/[0.06] text-[11px] text-apple-gray flex justify-between">
+                      <span>مؤشر كفاءة الطاقة:</span>
+                      <strong className="text-apple-blue tabular-nums num-font">{formatNumber(ecoImpact.efficiencyScore)}%</strong>
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Live Scrolling Line Chart & Live Events Feed */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                  
+                  {/* Chart (Col 1-8) */}
+                  <div className="lg:col-span-8 bg-white dark:bg-apple-cardDark rounded-3xl p-6 border border-black/[0.06] dark:border-white/[0.08] shadow-apple">
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        <h4 className="font-heading font-extrabold text-base text-gray-950 dark:text-white flex items-center gap-2">
+                          <span>الرسم البياني لتغير سحب الطاقة اللحظي (آخر 30 قراءة)</span>
+                          <span className="w-2 h-2 rounded-full bg-apple-green animate-ping"></span>
+                        </h4>
+                        <p className="text-xs text-apple-gray dark:text-gray-400 mt-0.5">
+                          تغير السحب بالواط لحظة بلحظة مع دورات تشغيل وفصل الأجهزة
+                        </p>
+                      </div>
+                      <div className="text-left font-bold text-apple-blue tabular-nums text-sm num-font">
+                        {formatNumber(latestReading.watts)} واط
+                      </div>
+                    </div>
+
+                    <div className="h-60 w-full relative">
+                      {telemetryHistory.length > 1 ? (
+                        <svg className="w-full h-full overflow-visible" viewBox="0 0 600 220" preserveAspectRatio="none">
+                          <defs>
+                            <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stopColor="#0071E3" stopOpacity="0.35" />
+                              <stop offset="100%" stopColor="#0071E3" stopOpacity="0.0" />
+                            </linearGradient>
+                          </defs>
+
+                          <line x1="0" y1="40" x2="600" y2="40" stroke="currentColor" strokeOpacity="0.08" strokeDasharray="3,3" />
+                          <line x1="0" y1="110" x2="600" y2="110" stroke="currentColor" strokeOpacity="0.08" strokeDasharray="3,3" />
+                          <line x1="0" y1="180" x2="600" y2="180" stroke="currentColor" strokeOpacity="0.08" strokeDasharray="3,3" />
+
+                          {(() => {
+                            const points = telemetryHistory;
+                            const maxVal = Math.max(...points.map(p => p.watts), baseWatts * 1.4, 1000);
+                            const minVal = Math.max(0, Math.min(...points.map(p => p.watts)) * 0.85);
+                            const range = (maxVal - minVal) || 1;
+
+                            const coords = points.map((p, idx) => {
+                              const x = (idx / (points.length - 1)) * 600;
+                              const y = 200 - (((p.watts - minVal) / range) * 170);
+                              return { x, y, watts: p.watts };
+                            });
+
+                            let pathD = `M ${coords[0].x} ${coords[0].y}`;
+                            for (let i = 0; i < coords.length - 1; i++) {
+                              const p0 = coords[i];
+                              const p1 = coords[i + 1];
+                              const mx = (p0.x + p1.x) / 2;
+                              pathD += ` C ${mx} ${p0.y}, ${mx} ${p1.y}, ${p1.x} ${p1.y}`;
+                            }
+
+                            const fillD = `${pathD} L 600 220 L 0 220 Z`;
+
+                            return (
+                              <>
+                                <path d={fillD} fill="url(#chartGradient)" />
+                                <path d={pathD} fill="none" stroke="#0071E3" strokeWidth="2.5" strokeLinecap="round" />
+                                {coords.map((c, i) => (
+                                  <circle
+                                    key={i}
+                                    cx={c.x}
+                                    cy={c.y}
+                                    r={i === coords.length - 1 ? 5 : 2}
+                                    fill={i === coords.length - 1 ? '#34C759' : '#0071E3'}
+                                    stroke="#FFFFFF"
+                                    strokeWidth="1.5"
+                                  />
+                                ))}
+                              </>
+                            );
+                          })()}
+                        </svg>
+                      ) : (
+                        <div className="h-full flex items-center justify-center text-xs text-apple-gray">
+                          جاري تدفق بيانات الطاقة...
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Event Feed (Col 9-12) */}
+                  <div className="lg:col-span-4 bg-white dark:bg-apple-cardDark rounded-3xl p-6 border border-black/[0.06] dark:border-white/[0.08] shadow-apple flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <h4 className="font-heading font-extrabold text-base text-gray-950 dark:text-white flex items-center gap-1.5">
+                          <Icon name="pulse" className="w-4 h-4 text-apple-blue" />
+                          سجل الأحداث والقفزات
+                        </h4>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06]">
+                          تلقائي
+                        </span>
+                      </div>
+
+                      <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
+                        {eventFeed.map((ev) => (
+                          <div
+                            key={ev.id}
+                            className={`p-2.5 rounded-xl border text-xs flex items-center justify-between transition-all ${
+                              ev.type === 'surge'
+                                ? 'bg-apple-red/10 border-apple-red/20 text-apple-red font-bold'
+                                : ev.type === 'spike'
+                                  ? 'bg-apple-orange/10 border-apple-orange/20 text-gray-900 dark:text-gray-100'
+                                  : ev.type === 'drop'
+                                    ? 'bg-apple-green/10 border-apple-green/20 text-gray-900 dark:text-gray-100'
+                                    : 'bg-black/[0.02] dark:bg-white/[0.03] border-black/[0.04] dark:border-white/[0.05] text-gray-700 dark:text-gray-300'
+                            }`}
+                          >
+                            <div className="truncate pr-1">
+                              <p className="text-xs truncate">{ev.text}</p>
+                              <span className="text-[10px] opacity-75 tabular-nums num-font">{ev.time}</span>
+                            </div>
+                            <span className="text-[11px] font-extrabold tabular-nums px-2 py-0.5 rounded-full flex-shrink-0 bg-white/50 dark:bg-zinc-800 num-font">
+                              {ev.delta}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-3 border-t border-black/[0.04] dark:border-white/[0.05] mt-4 flex items-center justify-between text-[11px] text-apple-gray">
+                      <span>تحديث لحظي مستمر</span>
+                      <button
+                        onClick={handleSimulatePeakSurge}
+                        className="font-bold text-apple-red hover:underline"
+                      >
+                        اختبار قفزة الآن
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            )}
+
+          </div>
+
+          {/* =========================================================================
+              THE DEDICATED OFFICIAL COLORFUL PRINT DOCUMENT
+              ========================================================================= */}
+          <div className="print-only-hidden print-document-wrapper">
+            <OfficialDocumentContent
+              appName={appName}
+              facility={activeFacility}
+              billDetails={billDetails}
+              isFixedBill={isFixedBill}
+              ecoImpact={ecoImpact}
+              latestReading={latestReading}
+              customerName={customerName}
+              onCustomerNameChange={setCustomerName}
+            />
+          </div>
+
+          {/* ===================== MODAL: CUSTOMER NAME ===================== */}
+          {showWelcomeNameModal && (
+            <WelcomeNameModal
+              initialName={customerName}
+              appName={appName}
+              onSave={handleWelcomeNameSave}
+            />
+          )}
+
+          {/* ===================== MODAL: ADD / EDIT DEVICE ===================== */}
+          {showDeviceModal && (
+            <DeviceModal
+              isOpen={showDeviceModal}
+              onClose={() => setShowDeviceModal(false)}
+              onSave={handleSaveDevice}
+              deviceToEdit={editingDevice}
+              presets={PRESETS}
+              rooms={availableRooms.filter(r => r !== 'الكل')}
+            />
+          )}
+
+          {/* ===================== MODAL: ADD NEW FACILITY ===================== */}
+          {showAddFacilityModal && (
+            <AddFacilityModal
+              isOpen={showAddFacilityModal}
+              onClose={() => setShowAddFacilityModal(false)}
+              onSave={handleCreateFacility}
+            />
+          )}
+
+        </div>
+      );
+    }
+
+    // =========================================================================
+    // MODAL: CUSTOMER NAME
+    // =========================================================================
+    function WelcomeNameModal({ initialName, appName, onSave }) {
+      const [nameInput, setNameInput] = useState(initialName || DEFAULT_CUSTOMER_NAME);
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        onSave(nameInput);
+      };
+
+      return (
+        <div className="no-print fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in text-right" dir="rtl">
+          <div className="bg-white dark:bg-zinc-900 rounded-3xl max-w-md w-full border border-black/[0.08] dark:border-white/[0.12] shadow-2xl overflow-hidden">
+            <div className="bg-gradient-to-l from-[#1a5c38] to-[#0f3d24] p-6 text-white">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 rounded-2xl bg-white/15 flex items-center justify-center text-xl">
+                  👤
+                </div>
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-200 block">
+                    مرحباً بك في منصة {appName}
+                  </span>
+                  <h3 className="font-heading font-black text-lg">
+                    تسجيل اسم مسؤول المنشأة / العميل
+                  </h3>
+                </div>
+              </div>
+              <p className="text-xs text-emerald-100/90 leading-relaxed">
+                أدخل اسمك ليظهر في التقرير التقديري عند الطباعة.
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">
+                  الاسم الكامل (يظهر في خانة العميل عند الطباعة):
+                </label>
+                <input
+                  type="text"
+                  autoFocus
+                  value={nameInput}
+                  onChange={(e) => setNameInput(e.target.value)}
+                  placeholder="مثال: اسم العميل"
+                  className="w-full px-4 py-3 rounded-2xl text-sm font-bold bg-gray-50 dark:bg-zinc-800 border border-black/[0.1] dark:border-white/[0.12] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1a5c38] text-right"
+                />
+              </div>
+
+              <div className="pt-2 flex items-center justify-end gap-2">
+                <button
+                  type="submit"
+                  className="w-full py-3 rounded-2xl bg-[#1a5c38] hover:bg-[#14472b] text-white text-xs font-black shadow-lg shadow-emerald-900/20 transition-all active:scale-[0.99]"
+                >
+                  حفظ الاسم والمتابعة إلى المنصة ←
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      );
+    }
+
+    // =========================================================================
+    // THE OFFICIAL COLORFUL PRINT DOCUMENT — SAUDI GOVERNMENT STANDARD
+    // =========================================================================
+    function OfficialDocumentContent({
+      appName,
+      facility,
+      billDetails,
+      isFixedBill,
+      ecoImpact,
+      latestReading,
+      customerName,
+      onCustomerNameChange,
+    }) {
+      const reportNumber = useMemo(() => 'KSA-AUD-' + Math.floor(100000 + Math.random() * 900000), []);
+      const displayCustomerName = customerName && customerName.trim() ? customerName : DEFAULT_CUSTOMER_NAME;
+      const verificationSeparator = REPORT_VERIFICATION_URL.includes('?') ? '&' : '?';
+      const verificationUrl = `${REPORT_VERIFICATION_URL}${verificationSeparator}report=${encodeURIComponent(reportNumber)}`;
+
+      return (
+        <div className="print-page text-gray-950" dir="rtl" style={{ fontSize: '9pt', lineHeight: '1.4', background: '#FFFFFF' }}>
+
+          {/* ═══ HEADER STRIP — Saudi Green + Gold Accent ═══ */}
+          <div style={{
+            background: 'linear-gradient(90deg, #134e2e 0%, #1a5c38 60%, #217346 100%)',
+            color: '#ffffff',
+            padding: '10px 16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            borderBottom: '3px solid #d4af37',
+            printColorAdjust: 'exact',
+            WebkitPrintColorAdjust: 'exact'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <div style={{
+                width: '34px',
+                height: '34px',
+                borderRadius: '8px',
+                background: 'rgba(255,255,255,0.14)',
+                border: '1px solid rgba(255,255,255,0.28)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '18px'
+              }}>⚡</div>
+              <div>
+                <div style={{ fontWeight: '900', fontSize: '11.5pt', letterSpacing: '0.2px' }}>منصة كفاءة</div>
+                <div style={{ fontSize: '7.5pt', opacity: '0.92', fontWeight: '600', color: '#d1fae5' }}>
+                  إدارة تقديرية لاستهلاك الطاقة والاستدامة
+                </div>
+              </div>
+            </div>
+            <div style={{ textAlign: 'left', fontSize: '7.5pt', direction: 'ltr' }} className="num-font">
+              <div style={{ fontWeight: '900', fontSize: '8pt', color: '#fde68a' }}>رقم التقرير: {reportNumber}</div>
+              <div style={{ opacity: '0.95' }}>{new Date().toLocaleDateString('en-GB')}</div>
+              <div style={{
+                background: 'rgba(255,255,255,0.2)',
+                border: '1px solid rgba(255,255,255,0.35)',
+                padding: '1px 7px',
+                borderRadius: '4px',
+                marginTop: '2px',
+                fontSize: '6.5pt',
+                fontWeight: '900'
+              }}>نسخة تقديرية</div>
+            </div>
+          </div>
+
+          {/* ═══ DOCUMENT TITLE BAND ═══ */}
+          <div style={{
+            background: 'linear-gradient(180deg, #ecfdf5 0%, #f0f9ff 100%)',
+            borderBottom: '2px solid #1a5c38',
+            padding: '8px 16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            printColorAdjust: 'exact',
+            WebkitPrintColorAdjust: 'exact'
+          }}>
+            <div>
+              <h1 style={{ fontSize: '12.5pt', fontWeight: '900', color: '#064e3b', margin: '0 0 2px 0' }}>
+                تقرير تقديري لاستهلاك الطاقة والتكاليف
+              </h1>
+              <p style={{ fontSize: '7.2pt', color: '#1e3a8a', margin: '0', fontWeight: '700' }}>
+                نتائج محاكاة تعليمية، وليست فاتورة فعلية أو اعتماداً من جهة رسمية.
+              </p>
+            </div>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              background: '#ffffff',
+              padding: '4px 10px',
+              borderRadius: '8px',
+              border: '1.5px solid #1a5c38',
+              flexShrink: 0
+            }}>
+              <SaudiRiyalSymbol className="w-4 h-4" color="#1a5c38" />
+              <span style={{ fontWeight: '900', fontSize: '11.5pt', color: '#1a5c38' }}>{appName}</span>
+            </div>
+          </div>
+
+          <div style={{
+            margin: '6px 16px 0',
+            padding: '7px 10px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '10px',
+            background: 'linear-gradient(110deg, #f0fdf4 0%, #eff6ff 100%)',
+            border: '1px solid #bfdbfe',
+            borderRight: '4px solid #1a5c38',
+            borderRadius: '8px',
+            printColorAdjust: 'exact',
+            WebkitPrintColorAdjust: 'exact'
+          }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0 }}>
+              <span style={{ color: '#1a5c38', fontSize: '6.2pt', fontWeight: '900' }}>إعداد الطلاب</span>
+              <span style={{ color: '#0f172a', fontSize: '7.5pt', fontWeight: '800', lineHeight: '1.45' }}>{PROJECT_STUDENTS}</span>
+            </div>
+            <span style={{
+              flexShrink: 0,
+              padding: '4px 9px',
+              borderRadius: '9999px',
+              background: '#ffffff',
+              border: '1px solid #bfdbfe',
+              color: '#1e3a8a',
+              fontSize: '7pt',
+              fontWeight: '900',
+              whiteSpace: 'nowrap'
+            }}>
+              الشعبة {PROJECT_SECTION}
+            </span>
+          </div>
+
+          {/* ═══ SECTION A: FACILITY METADATA ═══ */}
+          <div style={{
+            padding: '7px 16px',
+            borderBottom: '1px solid #cbd5e1',
+            background: '#f8fafc',
+            printColorAdjust: 'exact',
+            WebkitPrintColorAdjust: 'exact'
+          }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '10px', fontSize: '7.5pt' }}>
+              <div style={{ background: '#ffffff', padding: '5px 8px', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+                <div style={{ color: '#0369a1', fontWeight: '800', fontSize: '6.5pt', marginBottom: '2px' }}>اسم المنشأة</div>
+                <div style={{ fontWeight: '900', color: '#0f172a', fontSize: '8pt' }}>{facility.name}</div>
+              </div>
+              <div style={{ background: '#ffffff', padding: '5px 8px', borderRadius: '6px', border: '1.5px solid #1a5c38' }}>
+                <div style={{ color: '#1a5c38', fontWeight: '800', fontSize: '6.5pt', marginBottom: '2px' }}>مسؤول المنشأة (العميل)</div>
+                <input
+                  type="text"
+                  value={displayCustomerName}
+                  onChange={(e) => onCustomerNameChange(e.target.value)}
+                  placeholder="اسم العميل..."
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    fontWeight: '900',
+                    fontSize: '8.2pt',
+                    color: '#064e3b',
+                    outline: 'none',
+                    width: '100%',
+                    padding: '0'
+                  }}
+                />
+              </div>
+              <div style={{ background: '#ffffff', padding: '5px 8px', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+                <div style={{ color: '#0369a1', fontWeight: '800', fontSize: '6.5pt', marginBottom: '2px' }}>نظام التعريفة المستخدمة</div>
+                <div style={{ fontWeight: '800', color: '#0f172a', fontSize: '7.5pt', display: 'flex', alignItems: 'center', gap: '3px', flexWrap: 'wrap' }}>
+                  {facility.tariffMode === 'commercial'
+                    ? <>تجاري <SaudiCurrencyDisplay amount={facility.flatCommercialRate || 0.26} decimals={2} size="text-[7.5pt]" color="text-gray-800" /> / كيلوواط ساعة</>
+                    : <>سكني <SaudiCurrencyDisplay amount={0.18} decimals={2} size="text-[7.5pt]" color="text-gray-800" /> و <SaudiCurrencyDisplay amount={0.30} decimals={2} size="text-[7.5pt]" color="text-gray-800" /> / كيلوواط ساعة</>}
+                </div>
+              </div>
+              <div style={{ background: '#ecfdf5', padding: '5px 8px', borderRadius: '6px', border: '1px solid #a7f3d0' }}>
+                <div style={{ color: '#15803d', fontWeight: '800', fontSize: '6.5pt', marginBottom: '2px' }}>الحمل اللحظي المقاس</div>
+                <div style={{ fontWeight: '900', color: '#166534', fontSize: '8.5pt' }} className="num-font">
+                  {formatNumber(latestReading.watts)} واط
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ═══ SECTION B: DEVICE INVENTORY TABLE ═══ */}
+          <div style={{ padding: '7px 16px 5px', borderBottom: '1px solid #cbd5e1' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
+              <h3 style={{ fontSize: '8.5pt', fontWeight: '900', color: '#1a5c38', margin: '0' }}>
+                ① بيان وجرد الأحمال الكهربائية بالمنشأة
+              </h3>
+              <span style={{
+                fontSize: '7pt',
+                color: '#1e40af',
+                background: '#dbeafe',
+                padding: '1px 8px',
+                borderRadius: '9999px',
+                fontWeight: '800',
+                printColorAdjust: 'exact',
+                WebkitPrintColorAdjust: 'exact'
+              }} className="num-font">
+                إجمالي الأجهزة: {formatNumber(facility.devices?.length || 0)} {facility.devices?.length === 1 ? 'جهاز' : 'أجهزة'}
+              </span>
+            </div>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '7pt', direction: 'rtl' }}>
+              <thead>
+                <tr style={{
+                  background: 'linear-gradient(90deg, #1a5c38 0%, #217346 100%)',
+                  color: '#ffffff',
+                  printColorAdjust: 'exact',
+                  WebkitPrintColorAdjust: 'exact'
+                }}>
+                  <th style={{ padding: '3.5px 6px', fontWeight: '800', textAlign: 'right' }}>الجهاز / الحمل الكهربائي</th>
+                  <th style={{ padding: '3.5px 6px', fontWeight: '800', textAlign: 'right' }}>القسم / المنطقة</th>
+                  <th style={{ padding: '3.5px 6px', fontWeight: '800', textAlign: 'center' }}>واط</th>
+                  <th style={{ padding: '3.5px 6px', fontWeight: '800', textAlign: 'center' }}>العدد</th>
+                  <th style={{ padding: '3.5px 6px', fontWeight: '800', textAlign: 'center' }}>س/يوم</th>
+                  <th style={{ padding: '3.5px 6px', fontWeight: '800', textAlign: 'center' }}>يوم/شهر</th>
+                  <th style={{ padding: '3.5px 6px', fontWeight: '800', textAlign: 'center' }}>كيلوواط ساعة / شهر</th>
+                </tr>
+              </thead>
+              <tbody>
+                {(facility.devices || []).map((d, i) => {
+                  const kwh = (d.wattage * d.quantity * d.hoursPerDay * d.daysPerMonth) / 1000;
+                  return (
+                    <tr key={d.id} style={{
+                      background: i % 2 === 1 ? '#f0fdf4' : '#ffffff',
+                      borderBottom: '0.5px solid #d1fae5',
+                      printColorAdjust: 'exact',
+                      WebkitPrintColorAdjust: 'exact'
+                    }}>
+                      <td style={{ padding: '2.5px 6px', fontWeight: '700', color: '#111827' }}>{normalizeDeviceName(d.name)}</td>
+                      <td style={{ padding: '2.5px 6px', color: '#374151' }}>{d.room}</td>
+                      <td style={{ padding: '2.5px 6px', textAlign: 'center', color: '#111827' }} className="num-font">{formatNumber(d.wattage)}</td>
+                      <td style={{ padding: '2.5px 6px', textAlign: 'center', color: '#111827' }} className="num-font">×{formatNumber(d.quantity)}</td>
+                      <td style={{ padding: '2.5px 6px', textAlign: 'center', color: '#111827' }} className="num-font">{formatNumber(d.hoursPerDay, 1)}</td>
+                      <td style={{ padding: '2.5px 6px', textAlign: 'center', color: '#111827' }} className="num-font">{formatNumber(d.daysPerMonth)}</td>
+                      <td style={{ padding: '2.5px 6px', textAlign: 'center', fontWeight: '800', color: '#1a5c38' }} className="num-font">{formatNumber(kwh, 0)}</td>
+                    </tr>
+                  );
+                })}
+                <tr style={{
+                  background: '#dcfce7',
+                  borderTop: '1.5px solid #1a5c38',
+                  printColorAdjust: 'exact',
+                  WebkitPrintColorAdjust: 'exact'
+                }}>
+                  <td colSpan={6} style={{ padding: '3.5px 6px', fontWeight: '900', textAlign: 'right', color: '#14532d', fontSize: '7.5pt' }}>
+                    الإجمالي الشهري للاستهلاك الكهربائي
+                  </td>
+                  <td style={{ padding: '3.5px 6px', textAlign: 'center', fontWeight: '900', color: '#14532d', fontSize: '8pt' }} className="num-font">
+                    {formatNumber(billDetails.tier1Kwh + billDetails.tier2Kwh, 0)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* ═══ SECTION C: BILL + ENVIRONMENT (2 columns) ═══ */}
+          <div style={{ padding: '7px 16px 6px', borderBottom: '1px solid #cbd5e1', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+
+            {/* Bill Breakdown */}
+            <div>
+              <h3 style={{ fontSize: '8.5pt', fontWeight: '900', color: '#1e3a8a', margin: '0 0 4px 0' }}>
+                ② احتساب الفاتورة الشهرية التقديرية
+              </h3>
+              <table style={{ width: '100%', fontSize: '7pt', borderCollapse: 'collapse', border: '1px solid #bfdbfe' }}>
+                <tbody>
+                  {!billDetails.isCommercial && (
+                    <tr style={{ borderBottom: '0.5px solid #dbeafe', background: '#f8fafc' }}>
+                      <td style={{ padding: '2.5px 5px', color: '#1e293b', fontWeight: '600' }}>
+                        الشريحة الأولى (حتى 6,000 كيلوواط ساعة × <SaudiCurrencyDisplay amount={0.18} decimals={2} size="text-[7pt]" color="text-gray-800" /> / كيلوواط ساعة)
+                      </td>
+                      <td style={{ padding: '2.5px 5px', textAlign: 'left', fontWeight: '800', color: '#1e3a8a' }}>
+                        <SaudiCurrencyDisplay amount={billDetails.tier1Cost} decimals={2} size="text-[7pt]" color="text-blue-900" />
+                      </td>
+                    </tr>
+                  )}
+                  {billDetails.tier2Cost > 0 && (
+                    <tr style={{ borderBottom: '0.5px solid #dbeafe', background: '#fef2f2' }}>
+                      <td style={{ padding: '2.5px 5px', color: '#991b1b', fontWeight: '600' }}>
+                        الشريحة الثانية (فائض × <SaudiCurrencyDisplay amount={0.30} decimals={2} size="text-[7pt]" color="text-red-800" /> / كيلوواط ساعة)
+                      </td>
+                      <td style={{ padding: '2.5px 5px', textAlign: 'left', fontWeight: '800', color: '#991b1b' }}>
+                        <SaudiCurrencyDisplay amount={billDetails.tier2Cost} decimals={2} size="text-[7pt]" color="text-red-800" />
+                      </td>
+                    </tr>
+                  )}
+                  {billDetails.isCommercial && (
+                    <tr style={{ borderBottom: '0.5px solid #dbeafe', background: '#f8fafc' }}>
+                      <td style={{ padding: '2.5px 5px', color: '#1e293b', fontWeight: '600' }}>
+                        تعريفة تجارية موحدة (<SaudiCurrencyDisplay amount={facility.flatCommercialRate || 0.26} decimals={2} size="text-[7pt]" color="text-gray-800" /> / كيلوواط ساعة)
+                      </td>
+                      <td style={{ padding: '2.5px 5px', textAlign: 'left', fontWeight: '800', color: '#1e3a8a' }}>
+                        <SaudiCurrencyDisplay amount={billDetails.energyCost} decimals={2} size="text-[7pt]" color="text-blue-900" />
+                      </td>
+                    </tr>
+                  )}
+                  <tr style={{ borderBottom: '0.5px solid #dbeafe' }}>
+                    <td style={{ padding: '2.5px 5px', color: '#334155' }}>رسوم العداد الشهرية</td>
+                    <td style={{ padding: '2.5px 5px', textAlign: 'left', fontWeight: '700' }}>
+                      <SaudiCurrencyDisplay amount={billDetails.meter} decimals={2} size="text-[7pt]" color="text-gray-800" />
+                    </td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #93c5fd', background: '#f8fafc' }}>
+                    <td style={{ padding: '2.5px 5px', color: '#475569' }}>ضريبة القيمة المضافة (VAT 15%)</td>
+                    <td style={{ padding: '2.5px 5px', textAlign: 'left', fontWeight: '700', color: '#475569' }}>
+                      <SaudiCurrencyDisplay amount={billDetails.vat} decimals={2} size="text-[7pt]" color="text-gray-600" />
+                    </td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #93c5fd', background: '#eff6ff' }}>
+                    <td style={{ padding: '2.5px 5px', color: '#1e40af', fontWeight: '800' }}>زيادة تقديرية للعرض (30%)</td>
+                    <td style={{ padding: '2.5px 5px', textAlign: 'left', fontWeight: '800', color: '#1e40af' }}>
+                      <SaudiCurrencyDisplay amount={billDetails.priceAdjustment} decimals={2} size="text-[7pt]" color="text-blue-800" />
+                    </td>
+                  </tr>
+                  {isFixedBill && (
+                    <tr style={{ borderBottom: '1px solid #86efac', background: '#ecfdf5' }}>
+                      <td style={{ padding: '2.5px 5px', color: '#166534', fontWeight: '800' }}>برنامج الفاتورة الثابتة</td>
+                      <td style={{ padding: '2.5px 5px', textAlign: 'left', fontWeight: '800', color: '#166534' }}>مُفعّل</td>
+                    </tr>
+                  )}
+                  <tr style={{
+                    background: 'linear-gradient(90deg, #1e3a8a 0%, #1d4ed8 100%)',
+                    printColorAdjust: 'exact',
+                    WebkitPrintColorAdjust: 'exact'
+                  }}>
+                    <td style={{ padding: '4.5px 6px', fontWeight: '900', color: '#ffffff', fontSize: '8pt' }}>
+                      {isFixedBill ? 'القسط الشهري الثابت المستحق' : 'الإجمالي الشهري المستحق'}
+                    </td>
+                    <td style={{ padding: '4.5px 6px', textAlign: 'left', fontWeight: '900', color: '#fde047', fontSize: '9.5pt' }}>
+                      <SaudiCurrencyDisplay amount={billDetails.activeTotal} decimals={2} size="text-[9.5pt]" color="text-yellow-300" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Environmental Certificate */}
+            <div>
+              <h3 style={{ fontSize: '8.5pt', fontWeight: '900', color: '#1a5c38', margin: '0 0 4px 0' }}>
+                ③ مؤشرات الأثر البيئي التقديرية
+              </h3>
+              <div style={{
+                background: 'linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%)',
+                border: '1.5px solid #86efac',
+                borderRadius: '6px',
+                padding: '6px 8px',
+                fontSize: '7pt',
+                printColorAdjust: 'exact',
+                WebkitPrintColorAdjust: 'exact'
+              }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5px', marginBottom: '5px' }}>
+                  <div style={{ background: '#ffffff', border: '1px solid #bbf7d0', borderRadius: '4px', padding: '4px 6px' }}>
+                    <div style={{ color: '#15803d', fontSize: '6pt', fontWeight: '800' }}>الكربون الموفر</div>
+                    <div style={{ fontWeight: '900', color: '#14532d', fontSize: '9.5pt' }} className="num-font">
+                      {formatNumber(ecoImpact.savedCarbonKg)} <span style={{ fontSize: '6.5pt' }}>كجم CO₂</span>
+                    </div>
+                  </div>
+                  <div style={{ background: '#ffffff', border: '1px solid #bbf7d0', borderRadius: '4px', padding: '4px 6px' }}>
+                    <div style={{ color: '#15803d', fontSize: '6pt', fontWeight: '800' }}>يعادل غرس</div>
+                    <div style={{ fontWeight: '900', color: '#14532d', fontSize: '9.5pt' }} className="num-font">
+                      🌲 {formatNumber(ecoImpact.treesEquivalent, 1)} <span style={{ fontSize: '6.5pt' }}>شجرة</span>
+                    </div>
+                  </div>
+                  <div style={{ background: '#ffffff', border: '1px solid #bbf7d0', borderRadius: '4px', padding: '4px 6px' }}>
+                    <div style={{ color: '#15803d', fontSize: '6pt', fontWeight: '800' }}>درجة الكفاءة</div>
+                    <div style={{ fontWeight: '900', color: '#0369a1', fontSize: '9.5pt' }} className="num-font">
+                      {formatNumber(ecoImpact.efficiencyScore)}%
+                    </div>
+                  </div>
+                  <div style={{ background: '#ffffff', border: '1px solid #bbf7d0', borderRadius: '4px', padding: '4px 6px' }}>
+                    <div style={{ color: '#15803d', fontSize: '6pt', fontWeight: '800' }}>الأثر السنوي</div>
+                    <div style={{ fontWeight: '900', color: '#14532d', fontSize: '8.5pt' }} className="num-font">
+                      {formatNumber(ecoImpact.annualTreesEquivalent)} <span style={{ fontSize: '6.5pt' }}>شجرة/سنة</span>
+                    </div>
+                  </div>
+                </div>
+                <p style={{ margin: '0', fontSize: '6.5pt', color: '#166534', fontWeight: '700', lineHeight: '1.35', borderTop: '1px solid #bbf7d0', paddingTop: '4px' }}>
+                  هذه مؤشرات حسابية تقديرية، ولا تمثل شهادة اعتماد أو قياساً بيئياً رسمياً.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ padding: '5px 16px', background: '#eff6ff', borderBottom: '1px solid #bfdbfe', color: '#1e3a8a', fontSize: '7pt', fontWeight: '700' }}>
+            هذا تقرير تقديري لأغراض العرض، ولا يعد فاتورة فعلية أو وثيقة معتمدة من جهة حكومية.
+          </div>
+
+          {/* ═══ SIGNATURES + PROJECT STAMP ═══ */}
+          <div style={{ padding: '8px 16px 6px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+
+            {/* Technician Block */}
+            <div style={{ textAlign: 'center', width: '190px' }}>
+              <div style={{ fontSize: '7.8pt', fontWeight: '900', color: '#0f172a' }}>م. ناصر بن خالد العتيبي</div>
+              <div style={{ fontSize: '6pt', color: '#475569', marginTop: '1px', lineHeight: '1.3' }}>بيانات النموذج</div>
+              <svg viewBox="0 0 160 50" fill="none" style={{ width: '130px', height: '38px', margin: '4px auto', display: 'block', mixBlendMode: 'multiply' }}>
+                <path d="M15 35C30 15 50 12 70 20C90 28 85 45 65 42C45 39 40 20 60 15C80 10 110 15 145 25" stroke="#1E3A8A" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M40 28C65 22 100 24 130 38" stroke="#1E3A8A" strokeWidth="1.8" strokeLinecap="round"/>
+                <path d="M95 14C105 18 115 16 125 12" stroke="#1E3A8A" strokeWidth="2" strokeLinecap="round"/>
+                <circle cx="138" cy="18" r="1.5" fill="#1E3A8A"/>
+              </svg>
+              <div style={{ borderTop: '1.5px solid #1e3a8a', paddingTop: '3px', fontSize: '6.8pt', fontWeight: '800', color: '#1e3a8a' }}>
+                توقيع الفني
+              </div>
+            </div>
+
+            {/* Official Stamp (Center) */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
+              <OfficialAuditStamp />
+            </div>
+
+            {/* Customer signature line */}
+            <div style={{ textAlign: 'center', width: '190px' }}>
+              <div style={{ fontSize: '7.8pt', fontWeight: '900', color: '#064e3b' }}>{displayCustomerName}</div>
+              <div style={{ fontSize: '6pt', color: '#475569', marginTop: '1px' }}>مسؤول المنشأة / العميل</div>
+              <svg viewBox="0 0 160 50" fill="none" style={{ width: '130px', height: '38px', margin: '4px auto', display: 'block', mixBlendMode: 'multiply' }}>
+                <path d="M12 34C25 22 29 10 38 14C47 18 31 39 42 39C53 39 61 14 67 18C74 23 54 41 67 40C78 39 85 23 94 24C103 25 96 39 108 37C119 35 128 25 148 17" stroke="#065F46" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M55 44C77 39 107 42 139 34" stroke="#065F46" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+              <div style={{ borderTop: '1.5px solid #065f46', paddingTop: '3px', fontSize: '6.8pt', fontWeight: '800', color: '#065f46' }}>
+                توقيع العميل
+              </div>
+            </div>
+
+          </div>
+
+          {/* ═══ FOOTER ═══ */}
+          <div style={{
+            background: '#f1f5f9',
+            borderTop: '1px solid #cbd5e1',
+            padding: '4px 16px',
+            fontSize: '5.8pt',
+            color: '#475569',
+            display: 'flex',
+            justifyContent: 'space-between',
+            printColorAdjust: 'exact',
+            WebkitPrintColorAdjust: 'exact'
+          }}>
+            <span>منصة {appName}</span>
+            <span style={{ fontWeight: '800', color: '#1a5c38' }} className="num-font">{reportNumber}</span>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 16px 8px' }}>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '3px',
+              padding: '6px 12px 4px',
+              border: '1.5px solid #1e3a8a',
+              borderRadius: '8px',
+              background: '#eff6ff',
+              printColorAdjust: 'exact',
+              WebkitPrintColorAdjust: 'exact'
+            }}>
+              <ReportQRCode value={verificationUrl} />
+              <span style={{ fontSize: '7pt', fontWeight: '900', color: '#1e3a8a' }}>للتحقق من التقرير</span>
+              <span style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '3px',
+                padding: '2px 8px',
+                borderRadius: '9999px',
+                background: '#1e3a8a',
+                color: '#ffffff',
+                fontSize: '6pt',
+                fontWeight: '900'
+              }}>
+                <span>⚡</span>
+                <span>كفاءة</span>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      );
+    }
+
+    // =========================================================================
+    // SUB-VIEW: DEVICES MANAGEMENT
+    // =========================================================================
+    function DevicesManagementView({
+      devices,
+      allDevicesCount,
+      rooms,
+      selectedRoom,
+      onSelectRoom,
+      searchQuery,
+      onSearchChange,
+      onToggleDevice,
+      onHoursChange,
+      onDeleteDevice,
+      onEditDevice,
+      billDetails,
+      onOpenAddDevice
+    }) {
+      return (
+        <div className="space-y-6 animate-fade-in text-right">
+          <div className="bg-white dark:bg-apple-cardDark rounded-3xl p-6 border border-black/[0.06] dark:border-white/[0.08] shadow-apple">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-black/[0.06] dark:border-white/[0.08]">
+              <div>
+                <h3 className="font-heading font-extrabold text-xl text-gray-950 dark:text-white flex items-center gap-2">
+                  <span>جدول تشغيل الأجهزة ومحاكي التوفير</span>
+                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-apple-blue/10 text-apple-blue">
+                    تحديث فوري
+                  </span>
+                </h3>
+                <p className="text-xs text-apple-gray dark:text-gray-400 mt-1">
+                  غيّر ساعات التشغيل عبر أشرطة التمرير أو أزرار (+) و (-) لمشاهدة الهبوط الفوري في الفاتورة وانبعاثات الكربون
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={onOpenAddDevice}
+                  className="px-4 py-2 rounded-xl bg-apple-blue hover:bg-apple-blue-hover text-white text-xs font-bold shadow-md shadow-apple-blue/20 transition-all flex items-center gap-1.5"
+                >
+                  <Icon name="plus" className="w-3.5 h-3.5" />
+                  <span>إضافة جهاز جديد</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Room Filter Pills */}
+            <div className="py-4 flex flex-wrap items-center justify-between gap-3 border-b border-black/[0.04] dark:border-white/[0.05]">
+              <div className="flex flex-wrap items-center gap-1.5">
+                {rooms.map(r => (
+                  <button
+                    key={r}
+                    onClick={() => onSelectRoom(r)}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                      selectedRoom === r
+                        ? 'bg-apple-blue text-white shadow-sm'
+                        : 'bg-black/[0.04] dark:bg-white/[0.06] text-gray-600 dark:text-gray-300 hover:bg-black/[0.08]'
+                    }`}
+                  >
+                    {r}
+                  </button>
+                ))}
+              </div>
+
+              <div className="relative max-w-xs w-full">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => onSearchChange(e.target.value)}
+                  placeholder="ابحث عن جهاز أو قسم..."
+                  className="w-full pl-3 pr-9 py-2 rounded-xl text-xs bg-gray-50 dark:bg-zinc-800 border border-black/[0.06] dark:border-white/[0.08] text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-apple-blue text-right"
+                />
+                <div className="absolute right-3 top-2.5 text-gray-400">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Devices Table */}
+            <div className="overflow-x-auto mt-4">
+              <table className="w-full text-right text-xs">
+                <thead>
+                  <tr className="border-b border-black/[0.06] dark:border-white/[0.08] text-apple-gray dark:text-gray-400 font-bold">
+                    <th className="py-3 px-3">التفعيل</th>
+                    <th className="py-3 px-3">الجهاز</th>
+                    <th className="py-3 px-3">المساحة / القسم</th>
+                    <th className="py-3 px-3">القدرة (واط)</th>
+                    <th className="py-3 px-3">العدد</th>
+                    <th className="py-3 px-3 text-center min-w-[210px]">ساعات التشغيل اليومية</th>
+                    <th className="py-3 px-3">أيام/شهر</th>
+                    <th className="py-3 px-3">الاستهلاك الشهري</th>
+                    <th className="py-3 px-3">التكلفة التقديرية (+30%)</th>
+                    <th className="py-3 px-3 text-center">إجراءات</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-black/[0.04] dark:divide-white/[0.05]">
+                  {devices.map(d => {
+                    const kwh = (d.wattage * d.quantity * d.hoursPerDay * d.daysPerMonth) / 1000;
+                    const rate = billDetails.isCommercial ? 0.26 : (billDetails.isTier2 ? 0.24 : 0.18);
+                    const cost = kwh * rate * 1.15 * (1 + PRICE_ADJUSTMENT_RATE);
+                    return (
+                      <tr
+                        key={d.id}
+                        className={`group transition-colors ${
+                          !d.isActive ? 'opacity-40 bg-gray-50/50 dark:bg-zinc-900/40' : 'hover:bg-black/[0.015] dark:hover:bg-white/[0.02]'
+                        }`}
+                      >
+                        <td className="py-3.5 px-3">
+                          <button
+                            onClick={() => onToggleDevice(d.id)}
+                            className={`w-10 h-6 flex items-center rounded-full p-1 transition-colors duration-200 ${
+                              d.isActive ? 'bg-apple-green' : 'bg-gray-300 dark:bg-zinc-700'
+                            }`}
+                          >
+                            <div
+                              className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+                                d.isActive ? '-translate-x-4' : 'translate-x-0'
+                              }`}
+                            ></div>
+                          </button>
+                        </td>
+
+                        <td className="py-3.5 px-3">
+                          <div className="flex items-center gap-2.5 font-bold text-gray-900 dark:text-white">
+                            <div className="w-7 h-7 rounded-lg bg-black/[0.04] dark:bg-white/[0.06] flex items-center justify-center text-apple-blue dark:text-[#2997FF]">
+                              <Icon name={d.icon || 'zap'} className="w-4 h-4" />
+                            </div>
+                            <span>{normalizeDeviceName(d.name)}</span>
+                          </div>
+                        </td>
+
+                        <td className="py-3.5 px-3">
+                          <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-black/[0.04] dark:bg-white/[0.06] text-gray-600 dark:text-gray-300">
+                            {d.room}
+                          </span>
+                        </td>
+
+                        <td className="py-3.5 px-3 tabular-nums font-semibold text-gray-800 dark:text-gray-200 num-font">
+                          {formatNumber(d.wattage)} واط
+                        </td>
+
+                        <td className="py-3.5 px-3 tabular-nums text-gray-600 dark:text-gray-400 num-font">
+                          ×{formatNumber(d.quantity)}
+                        </td>
+
+                        <td className="py-3.5 px-3 text-center">
+                          <div className="flex items-center justify-center gap-2">
+                            <button
+                              onClick={() => onHoursChange(d.id, -0.5)}
+                              disabled={!d.isActive || d.hoursPerDay <= 0.5}
+                              className="w-7 h-7 rounded-full bg-black/[0.04] dark:bg-white/[0.08] hover:bg-apple-blue hover:text-white text-gray-700 dark:text-gray-300 flex items-center justify-center transition-colors disabled:opacity-30 disabled:pointer-events-none active:scale-90"
+                            >
+                              <Icon name="minus" className="w-3.5 h-3.5" />
+                            </button>
+
+                            <input
+                              type="range"
+                              min="0.5"
+                              max="24"
+                              step="0.5"
+                              value={d.hoursPerDay}
+                              onChange={(e) => onHoursChange(d.id, parseFloat(e.target.value) - d.hoursPerDay)}
+                              disabled={!d.isActive}
+                              className="w-24 cursor-pointer"
+                            />
+
+                            <button
+                              onClick={() => onHoursChange(d.id, 0.5)}
+                              disabled={!d.isActive || d.hoursPerDay >= 24}
+                              className="w-7 h-7 rounded-full bg-black/[0.04] dark:bg-white/[0.08] hover:bg-apple-blue hover:text-white text-gray-700 dark:text-gray-300 flex items-center justify-center transition-colors disabled:opacity-30 disabled:pointer-events-none active:scale-90"
+                            >
+                              <Icon name="plus" className="w-3.5 h-3.5" />
+                            </button>
+
+                            <span className="font-extrabold text-apple-blue dark:text-[#2997FF] tabular-nums w-12 text-left num-font">
+                              {formatNumber(d.hoursPerDay, 1)} س
+                            </span>
+                          </div>
+                        </td>
+
+                        <td className="py-3.5 px-3 tabular-nums text-gray-600 dark:text-gray-400 num-font">
+                          {formatNumber(d.daysPerMonth)} يوم
+                        </td>
+
+                        <td className="py-3.5 px-3 tabular-nums font-bold text-gray-900 dark:text-white num-font">
+                          {formatNumber(kwh, 0)} <span className="text-[10px] font-normal text-gray-500">كيلوواط ساعة</span>
+                        </td>
+
+                        <td className="py-3.5 px-3 tabular-nums font-extrabold text-gray-900 dark:text-white">
+                          <SaudiCurrencyDisplay amount={cost} decimals={2} size="text-xs" color="text-apple-blue dark:text-[#2997FF]" />
+                        </td>
+
+                        <td className="py-3.5 px-3 text-center">
+                          <div className="flex items-center justify-center gap-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
+                            <button
+                              onClick={() => onEditDevice(d)}
+                              className="p-1.5 rounded-lg hover:bg-black/[0.05] dark:hover:bg-white/[0.08] text-gray-500 hover:text-apple-blue"
+                              title="تعديل الجهاز"
+                            >
+                              <Icon name="edit" className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={() => onDeleteDevice(d.id)}
+                              className="p-1.5 rounded-lg hover:bg-apple-red/10 text-gray-500 hover:text-apple-red"
+                              title="حذف الجهاز"
+                            >
+                              <Icon name="trash" className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // =========================================================================
+    // SUB-VIEW: ANALYTICS & APPLE FITNESS RINGS
+    // =========================================================================
+    function AnalyticsAndEcoView({ facility, billDetails, ecoImpact, topDevices }) {
+      return (
+        <div className="space-y-8 animate-fade-in text-right">
+          <div className="bg-gradient-to-br from-apple-green/10 via-apple-blue/5 to-transparent rounded-3xl p-8 border border-apple-green/20">
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-apple-green/10 text-apple-green text-xs font-bold mb-3">
+                <Icon name="leaf" className="w-4 h-4" />
+                مبادرة السعودية الخضراء والاستدامة
+              </div>
+              <h2 className="font-heading font-extrabold text-3xl text-gray-950 dark:text-white tracking-tight">
+                حلقات الاستدامة البيئية للمنشأة
+              </h2>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
+                كل كيلوواط/ساعة يتم ترشيده يساهم مباشرة في خفض انبعاثات الكربون الصادرة من محطات التوليد. حول وفر الطاقة إلى أشجار حقيقية تمتص الكربون وتدعم مسيرة المملكة نحو الحياد الصفري بحلول 2060.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="lg:col-span-7 bg-white dark:bg-apple-cardDark rounded-3xl p-6 border border-black/[0.06] dark:border-white/[0.08] shadow-apple flex flex-col justify-between">
+              <div>
+                <h3 className="font-heading font-extrabold text-lg text-gray-950 dark:text-white mb-6">
+                  حلقات الاستدامة البيئية (كفاءة، كربون، أشجار)
+                </h3>
+
+                <div className="flex flex-col sm:flex-row items-center gap-8">
+                  <div className="relative w-44 h-44 flex-shrink-0">
+                    <svg className="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+                      <circle cx="60" cy="60" r="50" stroke="currentColor" strokeWidth="9" fill="none" className="text-gray-100 dark:text-zinc-800" />
+                      <circle cx="60" cy="60" r="38" stroke="currentColor" strokeWidth="9" fill="none" className="text-gray-100 dark:text-zinc-800" />
+                      <circle cx="60" cy="60" r="26" stroke="currentColor" strokeWidth="9" fill="none" className="text-gray-100 dark:text-zinc-800" />
+
+                      <circle
+                        cx="60" cy="60" r="50"
+                        stroke="#34C759" strokeWidth="9" strokeLinecap="round" fill="none"
+                        strokeDasharray="314.15"
+                        strokeDashoffset={314.15 - (314.15 * (ecoImpact.efficiencyScore / 100))}
+                        className="transition-all duration-700 ease-out"
+                      />
+                      <circle
+                        cx="60" cy="60" r="38"
+                        stroke="#30B0C7" strokeWidth="9" strokeLinecap="round" fill="none"
+                        strokeDasharray="238.76"
+                        strokeDashoffset={238.76 - (238.76 * Math.min(1, (ecoImpact.savedCarbonKg / 1500)))}
+                        className="transition-all duration-700 ease-out"
+                      />
+                      <circle
+                        cx="60" cy="60" r="26"
+                        stroke="#FF9500" strokeWidth="9" strokeLinecap="round" fill="none"
+                        strokeDasharray="163.36"
+                        strokeDashoffset={163.36 - (163.36 * Math.min(1, (parseFloat(ecoImpact.treesEquivalent) / 25)))}
+                        className="transition-all duration-700 ease-out"
+                      />
+                    </svg>
+
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <Icon name="tree" className="w-8 h-8 text-apple-green" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 flex-1">
+                    <div className="flex items-start gap-3">
+                      <span className="w-3.5 h-3.5 rounded-full bg-apple-green flex-shrink-0 mt-1"></span>
+                      <div>
+                        <div className="text-xs font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                          <span>درجة كفاءة الطاقة:</span>
+                          <span className="tabular-nums font-black text-apple-green num-font">{formatNumber(ecoImpact.efficiencyScore)}%</span>
+                        </div>
+                        <p className="text-[11px] text-apple-gray dark:text-gray-400">تقييم التشغيل الذكي للمنشأة مقارنة بالمعدل الأقصى.</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <span className="w-3.5 h-3.5 rounded-full bg-apple-cyan flex-shrink-0 mt-1"></span>
+                      <div>
+                        <div className="text-xs font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                          <span>الكربون الموفر شهرياً:</span>
+                          <span className="tabular-nums font-black text-apple-cyan num-font">{formatNumber(ecoImpact.savedCarbonKg)} كجم CO₂</span>
+                        </div>
+                        <p className="text-[11px] text-apple-gray dark:text-gray-400">انبعاثات تم تفادي إطلاقها في الهواء بفضل الترشيد.</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <span className="w-3.5 h-3.5 rounded-full bg-apple-orange flex-shrink-0 mt-1"></span>
+                      <div>
+                        <div className="text-xs font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                          <span>ما يعادله من الأشجار:</span>
+                          <span className="tabular-nums font-black text-apple-orange num-font">🌲 {formatNumber(ecoImpact.treesEquivalent, 1)} شجرة</span>
+                        </div>
+                        <p className="text-[11px] text-apple-gray dark:text-gray-400">كل شجرة تمتص 1.75 كجم CO₂ شهرياً (21 كجم سنوياً).</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between text-xs">
+                <span className="text-apple-gray dark:text-gray-400">الأثر السنوي التراكمي المتوقع:</span>
+                <span className="font-extrabold text-apple-green tabular-nums">
+                  ما يعادل غرس <span className="num-font">{formatNumber(ecoImpact.annualTreesEquivalent)}</span> شجرة سنوياً 🌲
+                </span>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 bg-white dark:bg-apple-cardDark rounded-3xl p-6 border border-black/[0.06] dark:border-white/[0.08] shadow-apple">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-heading font-extrabold text-base text-gray-950 dark:text-white">
+                  أعلى الأجهزة استهلاكاً بالمنشأة
+                </h3>
+                <span className="text-xs font-bold text-apple-blue bg-apple-blue/10 px-2 py-0.5 rounded-full">
+                  فرص التوفير
+                </span>
+              </div>
+              <p className="text-[10px] text-apple-gray dark:text-gray-400 -mt-2 mb-3">
+                التكاليف المعروضة تشمل ضريبة القيمة المضافة.
+              </p>
+
+              <div className="space-y-4">
+                {topDevices.map((d, idx) => {
+                  const displayName = normalizeDeviceName(d.name);
+                  return (
+                  <div key={d.id} className="space-y-1.5">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+                        <span className="w-4 h-4 rounded-full bg-black/[0.05] dark:bg-white/[0.08] text-[10px] flex items-center justify-center font-bold num-font">
+                          {idx + 1}
+                        </span>
+                        {displayName} (العدد: {formatNumber(d.quantity)})
+                      </span>
+                      <span className="tabular-nums font-bold text-apple-blue flex items-center gap-1">
+                        <span className="num-font">{formatNumber(d.percent, 2)}%</span>
+                        <span>(</span>
+                        <SaudiCurrencyDisplay amount={d.cost} decimals={2} size="text-xs" color="text-apple-blue dark:text-[#2997FF]" />
+                        <span>)</span>
+                      </span>
+                    </div>
+                    <div className="h-2 w-full bg-gray-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-l from-apple-blue to-[#2997FF]"
+                        style={{ width: `${Math.max(6, d.percent)}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // =========================================================================
+    // MODAL: DEVICE ADD / EDIT
+    // =========================================================================
+    function DeviceModal({ isOpen, onClose, onSave, deviceToEdit, presets, rooms }) {
+      const [name, setName] = useState(deviceToEdit?.name || '');
+      const [room, setRoom] = useState(deviceToEdit?.room || (rooms[0] || 'الصالة'));
+      const [wattage, setWattage] = useState(deviceToEdit?.wattage || 1500);
+      const [quantity, setQuantity] = useState(deviceToEdit?.quantity || 1);
+      const [hoursPerDay, setHoursPerDay] = useState(deviceToEdit?.hoursPerDay || 8);
+      const [daysPerMonth, setDaysPerMonth] = useState(deviceToEdit?.daysPerMonth || 30);
+      const [icon, setIcon] = useState(deviceToEdit?.icon || 'zap');
+
+      const handlePresetSelect = (p) => {
+        setName(p.name);
+        setWattage(p.wattage);
+        setRoom(p.room);
+        setIcon(p.icon);
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!name.trim()) return alert('الرجاء كتابة اسم الجهاز');
+        onSave({
+          name: name.trim(),
+          room,
+          wattage: Number(wattage),
+          quantity: Number(quantity),
+          hoursPerDay: Number(hoursPerDay),
+          daysPerMonth: Number(daysPerMonth),
+          icon,
+          isActive: deviceToEdit ? deviceToEdit.isActive : true
+        });
+      };
+
+      return (
+        <div className="no-print fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md animate-fade-in text-right" dir="rtl">
+          <div className="bg-white dark:bg-zinc-900 rounded-3xl max-w-2xl w-full border border-black/[0.08] dark:border-white/[0.1] shadow-2xl overflow-hidden">
+            <div className="p-6 border-b border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between">
+              <div>
+                <h3 className="font-heading font-bold text-lg text-gray-950 dark:text-white">
+                  {deviceToEdit ? 'تعديل بيانات الجهاز' : 'إضافة جهاز جديد إلى المنشأة'}
+                </h3>
+                <p className="text-xs text-apple-gray dark:text-gray-400 mt-0.5">
+                  اختر من مكتبة الأجهزة الذكية للتعبئة التلقائية للقدرة بالواط
+                </p>
+              </div>
+              <button onClick={onClose} className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 text-gray-500">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12" strokeWidth="2" strokeLinecap="round"/></svg>
+              </button>
+            </div>
+
+            <div className="p-6 pb-3 border-b border-black/[0.04] dark:border-white/[0.05] bg-gray-50/50 dark:bg-zinc-800/30">
+              <span className="text-xs font-bold text-apple-gray dark:text-gray-400 block mb-2">
+                مكتبة الأجهزة الجاهزة (تعبئة فورية بالواط):
+              </span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 max-h-36 overflow-y-auto pr-1">
+                {presets.map((p, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => handlePresetSelect(p)}
+                    className="p-2 rounded-xl border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-zinc-800 hover:border-apple-blue hover:bg-apple-blue/5 text-right transition-all group"
+                  >
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-800 dark:text-gray-200 group-hover:text-apple-blue">
+                      <Icon name={p.icon} className="w-3.5 h-3.5 flex-shrink-0 text-apple-blue" />
+                      <span className="truncate">{p.name}</span>
+                    </div>
+                    <div className="text-[11px] text-apple-gray dark:text-gray-400 tabular-nums mt-0.5 num-font">
+                      {formatNumber(p.wattage)} واط
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">اسم الجهاز</label>
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="مثال: مكيف الصالة"
+                    className="w-full px-3 py-2 rounded-xl text-xs bg-gray-50 dark:bg-zinc-800 border border-black/[0.08] dark:border-white/[0.1] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-apple-blue text-right"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">المساحة / القسم</label>
+                  <input
+                    type="text"
+                    required
+                    value={room}
+                    onChange={(e) => setRoom(e.target.value)}
+                    placeholder="مثال: الصالة أو الفصول أو المكاتب"
+                    className="w-full px-3 py-2 rounded-xl text-xs bg-gray-50 dark:bg-zinc-800 border border-black/[0.08] dark:border-white/[0.1] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-apple-blue text-right"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">القدرة الكهربائية (واط)</label>
+                  <input
+                    type="number"
+                    required
+                    min="1"
+                    max="80000"
+                    value={wattage}
+                    onChange={(e) => setWattage(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl text-xs bg-gray-50 dark:bg-zinc-800 border border-black/[0.08] dark:border-white/[0.1] text-gray-900 dark:text-white tabular-nums focus:outline-none focus:ring-2 focus:ring-apple-blue text-right num-font"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">العدد</label>
+                  <input
+                    type="number"
+                    required
+                    min="1"
+                    max="200"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl text-xs bg-gray-50 dark:bg-zinc-800 border border-black/[0.08] dark:border-white/[0.1] text-gray-900 dark:text-white tabular-nums focus:outline-none focus:ring-2 focus:ring-apple-blue text-right num-font"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">ساعات التشغيل اليومية ({formatNumber(hoursPerDay, 1)} س)</label>
+                  <input
+                    type="number"
+                    step="0.5"
+                    min="0.5"
+                    max="24"
+                    value={hoursPerDay}
+                    onChange={(e) => setHoursPerDay(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl text-xs bg-gray-50 dark:bg-zinc-800 border border-black/[0.08] dark:border-white/[0.1] text-gray-900 dark:text-white tabular-nums focus:outline-none focus:ring-2 focus:ring-apple-blue text-right num-font"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">أيام التشغيل بالشهر</label>
+                  <input
+                    type="number"
+                    min="1"
+                    max="31"
+                    value={daysPerMonth}
+                    onChange={(e) => setDaysPerMonth(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl text-xs bg-gray-50 dark:bg-zinc-800 border border-black/[0.08] dark:border-white/[0.1] text-gray-900 dark:text-white tabular-nums focus:outline-none focus:ring-2 focus:ring-apple-blue text-right num-font"
+                  />
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.08] flex items-center justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="px-4 py-2 rounded-xl border border-black/[0.08] dark:border-white/[0.1] text-xs font-semibold text-gray-600 dark:text-gray-300"
+                >
+                  إلغاء
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-2 rounded-xl bg-apple-blue hover:bg-apple-blue-hover text-white text-xs font-bold shadow-md shadow-apple-blue/20"
+                >
+                  {deviceToEdit ? 'حفظ التعديلات' : 'إضافة الجهاز'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      );
+    }
+
+    // =========================================================================
+    // MODAL: ADD CUSTOM FACILITY
+    // =========================================================================
+    function AddFacilityModal({ isOpen, onClose, onSave }) {
+      const [name, setName] = useState('');
+      const [category, setCategory] = useState('residential');
+      const [tariffMode, setTariffMode] = useState('residential');
+      const [flatRate, setFlatRate] = useState(0.26);
+      const [meterFee, setMeterFee] = useState(15.00);
+      const [schedule, setSchedule] = useState('تشغيل اعتيادي');
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!name.trim()) return alert('الرجاء كتابة اسم المنشأة');
+        onSave({
+          name: name.trim(),
+          category,
+          tariffMode,
+          flatRate: Number(flatRate),
+          meterFee: Number(meterFee),
+          schedule: schedule.trim()
+        });
+      };
+
+      return (
+        <div className="no-print fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md animate-fade-in text-right" dir="rtl">
+          <div className="bg-white dark:bg-zinc-900 rounded-3xl max-w-lg w-full border border-black/[0.08] dark:border-white/[0.1] shadow-2xl overflow-hidden">
+            <div className="p-6 border-b border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between">
+              <div>
+                <h3 className="font-heading font-bold text-lg text-gray-950 dark:text-white">
+                  إضافة ملف منشأة مخصصة جديدة
+                </h3>
+                <p className="text-xs text-apple-gray dark:text-gray-400 mt-0.5">
+                  إنشاء ملف مستقل بجدول تشغيل وتعريفة خاصة محفوظة في الذاكرة المحلية
+                </p>
+              </div>
+              <button onClick={onClose} className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 text-gray-500">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12" strokeWidth="2" strokeLinecap="round"/></svg>
+              </button>
+            </div>
+
+            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">اسم المنشأة</label>
+                <input
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="مثال: مجمع عيادات أو مستودع أو فرع مصرف"
+                  className="w-full px-3 py-2 rounded-xl text-xs bg-gray-50 dark:bg-zinc-800 border border-black/[0.08] dark:border-white/[0.1] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-apple-blue text-right"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">نوع التصنيف</label>
+                  <select
+                    value={category}
+                    onChange={(e) => {
+                      setCategory(e.target.value);
+                      if (e.target.value === 'commercial' || e.target.value === 'institutional') {
+                        setTariffMode('commercial');
+                      } else {
+                        setTariffMode('residential');
+                      }
+                    }}
+                    className="w-full px-3 py-2 rounded-xl text-xs bg-gray-50 dark:bg-zinc-800 border border-black/[0.08] dark:border-white/[0.1] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-apple-blue text-right"
+                  >
+                    <option value="residential">سكني (منازل وفلل)</option>
+                    <option value="commercial">تجاري (مكاتب وأسواق)</option>
+                    <option value="institutional">مؤسسي (مدارس ومراكز)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">نظام التعريفة</label>
+                  <select
+                    value={tariffMode}
+                    onChange={(e) => setTariffMode(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl text-xs bg-gray-50 dark:bg-zinc-800 border border-black/[0.08] dark:border-white/[0.1] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-apple-blue text-right"
+                  >
+                    <option value="residential">سكني بالشرائح</option>
+                    <option value="commercial">تجاري موحد</option>
+                  </select>
+                  <div className="mt-1 text-[10px] text-apple-gray flex flex-wrap items-center gap-1">
+                    <span>التعريفة لكل كيلوواط ساعة:</span>
+                    {tariffMode === 'residential'
+                      ? <><SaudiCurrencyDisplay amount={0.18} decimals={2} size="text-[10px]" color="text-gray-700 dark:text-gray-300" /> و <SaudiCurrencyDisplay amount={0.30} decimals={2} size="text-[10px]" color="text-gray-700 dark:text-gray-300" /></>
+                      : <SaudiCurrencyDisplay amount={flatRate} decimals={2} size="text-[10px]" color="text-gray-700 dark:text-gray-300" />}
+                  </div>
+                </div>
+              </div>
+
+              {tariffMode === 'commercial' && (
+                <div>
+                  <label className="mb-1 flex items-center gap-1 text-xs font-bold text-gray-700 dark:text-gray-300">
+                    سعر الكيلوواط التجاري (<SaudiRiyalSymbol className="w-3 h-3" /> / كيلوواط ساعة)
+                  </label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={flatRate}
+                    onChange={(e) => setFlatRate(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl text-xs bg-gray-50 dark:bg-zinc-800 border border-black/[0.08] dark:border-white/[0.1] text-gray-900 dark:text-white tabular-nums text-right num-font"
+                  />
+                </div>
+              )}
+
+              <div>
+                <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">جدول ومواعيد التشغيل</label>
+                <input
+                  type="text"
+                  value={schedule}
+                  onChange={(e) => setSchedule(e.target.value)}
+                  placeholder="مثال: يومياً من 8 ص إلى 6 م"
+                  className="w-full px-3 py-2 rounded-xl text-xs bg-gray-50 dark:bg-zinc-800 border border-black/[0.08] dark:border-white/[0.1] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-apple-blue text-right"
+                />
+              </div>
+
+              <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.08] flex items-center justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="px-4 py-2 rounded-xl border border-black/[0.08] dark:border-white/[0.1] text-xs font-semibold text-gray-600 dark:text-gray-300"
+                >
+                  إلغاء
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 rounded-xl bg-apple-blue text-white text-xs font-bold shadow-md shadow-apple-blue/20"
+                >
+                  إنشاء المنشأة
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      );
+    }
+
+    // Mount React Root
+    const rootElement = document.getElementById('root');
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(<KafaaApp />);
+  </script>
+</body>
+</html>
